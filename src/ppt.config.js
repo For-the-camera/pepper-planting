@@ -9,6 +9,6 @@ export default [
     index: 2,
     title: "问题1",
     left: import("../src/ppt/SelectPlate.vue"),
-    right: import("../src/ppt/test1.vue"),
+    right: import("../src/ppt/SelectPlateText.vue"),
   },
 ];

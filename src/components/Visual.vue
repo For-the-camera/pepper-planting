@@ -55,14 +55,12 @@ export default {
       ];
       if (num <= 10) {
         for (let i = 0; i < num; i++) {
-          console.log(1, positionX[i]);
           drawImage(
             this.botany_ctx,
             this.seedling,
             positionX[i],
             coordYTransform(30, 112)
           );
-          gap = gap + 112 + offset;
         }
       } else {
         if (num > 10 && num <= 20) {
@@ -146,30 +144,31 @@ export default {
 };
 </script>
 <template>
-  <div style="padding: 20px; position: relative">
+  <div style="position: relative; height: 220px">
     <canvas
       ref="canvasRef"
       width="240"
-      height="250"
-      style="position: absolute"
+      height="220"
+      style="position: absolute; left: 10%"
+    ></canvas>
+
+    <canvas
+      ref="soilRef"
+      width="240"
+      height="220"
+      style="position: absolute; left: 10%"
     ></canvas>
     <canvas
       ref="animationRef"
       width="240"
-      height="250"
-      style="position: absolute"
+      height="220"
+      style="position: absolute; left: 10%"
     ></canvas>
     <canvas
       ref="bottleRef"
       width="240"
-      height="250"
-      style="position: absolute"
-    ></canvas>
-    <canvas
-      ref="soilRef"
-      width="240"
-      height="250"
-      style="position: absolute"
+      height="220"
+      style="position: absolute; left: 10%"
     ></canvas>
   </div>
 </template>

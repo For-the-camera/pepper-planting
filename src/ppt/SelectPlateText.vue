@@ -1,0 +1,32 @@
+<script>
+export default {
+  name: "SelectPlateText",
+  props: {},
+  data() {
+    return {};
+  },
+  methods: {},
+};
+</script>
+<template>
+  <div
+    class="bg-right border-radius-round h-full flex items-center justify-items-center"
+  >
+    <div
+      style="padding: 20px; font-size: 22px; line-height: 2em"
+      class="space-y-3"
+    >
+      <p>
+        请你设计实验来探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒。实验材料包括：四个大型育苗盘、一些辣椒苗、泥土（来自同一片生物角）。
+      </p>
+      <p>
+        <strong>问题1</strong>
+        在设计实验时，首先请思考需要几个育苗盘、育苗盘中栽几株辣椒苗？
+      </p>
+      <p>具体操作如下：</p>
+      <p>（1）勾选育苗盘编号；</p>
+      <p>（2）之后点击下拉菜单选择辣椒苗株数。 操作完毕后，请点击“下一步”。</p>
+    </div>
+  </div>
+</template>
+<style scoped></style>

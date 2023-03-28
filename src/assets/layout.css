@@ -1,7 +1,10 @@
+.text-center {
+  text-align: center;
+}
 .grid-2-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 330.5px));
 }
 /* 一行两列 */
 .grid-1-2 {
@@ -13,6 +16,9 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, 1fr);
+}
+.gap-1 {
+  gap: 0.25rem;
 }
 .flex {
   display: flex;
@@ -28,4 +34,10 @@
 }
 .space-x-4 > * + * {
   margin-left: 1rem;
+}
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+.space-y-1 > * + * {
+  margin-top: 0.25rem;
 }

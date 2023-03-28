@@ -1,4 +1,4 @@
-const canvasHeight = 250;
+const canvasHeight = 220;
 export const canvasWidth = 240;
 
 export function drawImage(ctx, imgData, x, y) {
