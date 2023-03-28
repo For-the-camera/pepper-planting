@@ -12,6 +12,12 @@ const router = new VueRouter({
       path: "/",
       name: "index",
       component: Index,
+      // redirect: "/dev",
+    },
+    {
+      path: "/dev",
+      name: "dev",
+      component: () => import("../views/Test.vue"),
     },
   ],
 });

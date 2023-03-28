@@ -102,13 +102,12 @@ export default {
   </div>
 </template>
 <style lang="scss" scoped>
-$ppt-border: 5px;
+$ppt-border: 0px;
 $ppt-padding: 5px;
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
-
   .ppt-content {
     flex-grow: 2;
     margin-top: 20px;
@@ -118,12 +117,13 @@ $ppt-padding: 5px;
     .left {
       border-top: $ppt-border solid black;
       border-bottom: $ppt-border solid black;
-      border-right: $ppt-border solid black;
+      border-left: $ppt-border solid black;
       padding: $ppt-padding;
     }
     .right {
       border-top: $ppt-border solid black;
       border-bottom: $ppt-border solid black;
+      border-right: $ppt-border solid black;
       padding: $ppt-padding;
     }
   }

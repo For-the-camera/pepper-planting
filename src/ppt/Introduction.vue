@@ -1,7 +1,7 @@
 <script>
 import pepper from "../assets/image/pepper.png";
 export default {
-  name: "page1",
+  name: "Introduction",
   data() {
     return {
       pepper,
@@ -10,7 +10,7 @@ export default {
 };
 </script>
 <template>
-  <div class="container">
+  <div class="container bg-single border-radius-round">
     <div class="picture">
       <strong>辣椒种植</strong>
       <img :src="pepper" alt="pepper" />

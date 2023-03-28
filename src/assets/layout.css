@@ -1,0 +1,31 @@
+.grid-2-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+/* 一行两列 */
+.grid-1-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+.grid-2-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-items-center {
+  justify-items: center;
+}
+.items-center {
+  align-items: center;
+}
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
