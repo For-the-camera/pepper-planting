@@ -15,7 +15,7 @@
 .grid-2-1 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 330.5px));
 }
 .gap-1 {
   gap: 0.25rem;

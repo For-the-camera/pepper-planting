@@ -1,0 +1,43 @@
+<script>
+import { useUserStore } from "../stores/user";
+export default {
+  name: "SeedlingNumText",
+  props: {},
+  data() {
+    return { store: useUserStore() };
+  },
+  methods: {},
+};
+</script>
+<template>
+  <div
+    class="bg-right border-radius-round h-full flex items-center justify-items-center"
+  >
+    <div
+      style="padding: 20px; font-size: 22px; line-height: 2em"
+      class="space-y-3"
+    >
+      <p>
+        为探究哪种肥料（肥料<strong>A</strong>、肥料<strong>B</strong>）能促进植物产出更多辣椒，左图为一种合理的实验设置：3个育苗盘、每个育苗盘中辣椒苗均为10株。
+      </p>
+
+      <p><strong>问题2.1</strong> 请问为什么设置3个育苗盘？</p>
+      <el-input
+        type="textarea"
+        :rows="3"
+        placeholder="请输入内容"
+        v-model="store.issue2.answers1"
+      >
+      </el-input>
+      <p><strong>问题2.2</strong> 为什么每个育苗盘中的辣椒苗均为10株？</p>
+      <el-input
+        type="textarea"
+        :rows="3"
+        placeholder="请输入内容"
+        v-model="store.issue2.answers2"
+      >
+      </el-input>
+    </div>
+  </div>
+</template>
+<style scoped></style>

@@ -138,7 +138,7 @@ export default {
       this.plant(1);
     }
     if (this.state == 1) {
-      this.plant(40);
+      this.plant(10);
     }
   },
 };
