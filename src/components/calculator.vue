@@ -1,5 +1,4 @@
 <script>
-import calc from "calculatorjs";
 import { evaluate } from "mathjs";
 export default {
   props: {},
@@ -40,6 +39,12 @@ export default {
       if (this.expression.length !== 0) {
         try {
           temp = evaluate(this.expression);
+          this.$nextTick(() => {
+            const expressionEl = this.$refs.expressionRef;
+            if (expressionEl) {
+              expressionEl.scrollLeft = expressionEl.scrollWidth;
+            }
+          });
         } catch (e) {
           temp = "表达式错误";
         }
@@ -58,7 +63,9 @@ export default {
 <template>
   <div class="calculator border-radius-round">
     <div class="display">
-      <div class="expression">{{ expression }}</div>
+      <div class="expression" ref="expressionRef">
+        {{ expression }}
+      </div>
       <div class="answer">{{ answer }}</div>
     </div>
     <div class="keyboard">
@@ -642,11 +649,12 @@ export default {
       white-space: nowrap;
       text-align: right;
       font-size: 25px;
-      overflow-x: scroll;
+      overflow-x: auto;
       overflow-y: hidden;
     }
 
     .expression::-webkit-scrollbar {
+      width: 0;
       height: 0px;
     }
 
