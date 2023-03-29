@@ -7,8 +7,10 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "calculatorjs": "^1.1.2",
     "element-ui": "^2.15.13",
     "gsap": "^3.11.5",
+    "mathjs": "^11.7.0",
     "pinia": "^2.0.16",
     "sass": "^1.60.0",
     "vue": "^2.7.7",
