@@ -57,6 +57,13 @@ export default {
       this.keyboardActivateCtrl.Delete = true;
       this.expression = this.expression.substr(0, this.expression.length - 1);
     },
+    onConfirm() {
+      this.$emit("onConfirm", {
+        expression: this.expression,
+        answer: this.answer,
+      });
+      this.expression = "";
+    },
   },
 };
 </script>
@@ -603,6 +610,7 @@ export default {
           @mousedown="
             () => {
               keyboardActivateCtrl.Confirm = true;
+              onConfirm();
             }
           "
           @mouseup="

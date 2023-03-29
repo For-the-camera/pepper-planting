@@ -17,7 +17,11 @@ export const useUserStore = defineStore("user", {
       answers: "",
     },
     issue6: {
-      height: [0, 0, 0],
+      height: [
+        { expression: "", answer: "0" },
+        { expression: "", answer: "0" },
+        { expression: "", answer: "0" },
+      ],
       answers: "",
     },
     issue7: {
