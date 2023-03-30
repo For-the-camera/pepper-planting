@@ -25,7 +25,11 @@ export const useUserStore = defineStore("user", {
       answers: "",
     },
     issue7: {
-      flower: [0, 0, 0],
+      flower: [
+        { expression: "", answer: "0" },
+        { expression: "", answer: "0" },
+        { expression: "", answer: "0" },
+      ],
     },
     issue8: {
       choice: "",

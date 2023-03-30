@@ -60,25 +60,26 @@ export default {
   },
   methods: {
     submitStore() {
-      this.store.issue1.answers = Array.from(this.choice, (choice, index) => {
+      let answersList = [];
+      this.choice.forEach((choice, index) => {
         if (choice) {
-          return null;
+          const temp = {
+            no: index + 1,
+            num: 1,
+          };
+          if (index == 0) {
+            temp.num = this.plateA;
+          } else if (index == 1) {
+            temp.num = this.plateB;
+          } else if (index == 2) {
+            temp.num = this.plateC;
+          } else if (index == 3) {
+            temp.num = this.plateD;
+          }
+          answersList.push(temp);
         }
-        const temp = {
-          no: index + 1,
-          num: 1,
-        };
-        if (index == 0) {
-          temp.num = this.plateA;
-        } else if (index == 1) {
-          temp.num = this.plateB;
-        } else if (index == 2) {
-          temp.num = this.plateC;
-        } else if (index == 3) {
-          temp.num = this.plateD;
-        }
-        return temp;
       });
+      this.store.issue1.answers = answersList;
     },
   },
 };

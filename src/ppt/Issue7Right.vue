@@ -13,7 +13,7 @@ export default {
   methods: {
     onConfirm(val) {
       this.mark = false;
-      this.store.issue6.height[this.nowIssue] = val;
+      this.store.issue7.flower[this.nowIssue] = val;
     },
     openCalculator(nowIssue) {
       this.mark = true;
@@ -36,7 +36,7 @@ export default {
       <p>
         1号育苗盘内每一棵苗的花的数量：
         <el-button type="primary" @click="openCalculator(0)">{{
-          store.issue6.height[0].answer
+          store.issue7.flower[0].answer
         }}</el-button
         >朵（保留1位小数）
       </p>
@@ -44,7 +44,7 @@ export default {
         2号育苗盘内每一棵苗的花的数量：<el-button
           type="primary"
           @click="openCalculator(1)"
-          >{{ store.issue6.height[1].answer }}</el-button
+          >{{ store.issue7.flower[1].answer }}</el-button
         >
         朵（保留1位小数）
       </p>
@@ -52,7 +52,7 @@ export default {
         3号育苗盘内每一棵苗的花的数量：<el-button
           type="primary"
           @click="openCalculator(2)"
-          >{{ store.issue6.height[2].answer }}</el-button
+          >{{ store.issue7.flower[2].answer }}</el-button
         >
         朵（保留1位小数）
       </p>
