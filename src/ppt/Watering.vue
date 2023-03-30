@@ -1,4 +1,5 @@
 <script>
+import { forEach, log } from "mathjs";
 import Visual from "../components/Visual.vue";
 import { useUserStore } from "../stores/user";
 export default {
@@ -12,14 +13,14 @@ export default {
       store: useUserStore(),
       answer: [
         {
-          NPKA: 0,
+          NPKA: 10,
           NPKB: 0,
-          noNPK: "1",
+          noNPK: "0",
         },
         {
           NPKA: 0,
-          NPKB: 0,
-          noNPK: "1",
+          NPKB: 10,
+          noNPK: "0",
         },
         {
           NPKA: 0,
@@ -34,6 +35,7 @@ export default {
         15: "15ml",
         20: "20ml",
       },
+      buttonLock: false,
     };
   },
   methods: {
@@ -44,16 +46,38 @@ export default {
       this.answer[index].noNPK = this.answer[index].noNPK === "1" ? "0" : "1";
     },
     watering(ref, answer) {
+      let timeout = 0;
+      let now = null;
       if (answer.noNPK !== "1") {
         if (answer.NPKA !== 0) {
-          ref.watering(answer.NPKA * 3, "化肥A");
-          if (answer.NPKB !== 0) {
+          timeout = timeout + 2000;
+          now = "A";
+        }
+        if (answer.NPKB !== 0) {
+          timeout = timeout + 2000;
+          now = "B";
+        }
+        if (now) {
+          if (timeout === 2000) {
+            if (now === "A") {
+              ref.watering(answer.NPKA * 3, "化肥A");
+            }
+            if (now === "B") {
+              ref.watering(answer.NPKB * 3, "化肥B");
+            }
+          } else if (timeout === 4000) {
+            ref.watering(answer.NPKA * 3, "化肥A");
             setTimeout(() => {
               ref.watering(answer.NPKB * 3, "化肥B");
-            }, 5000);
+            }, 3000);
           }
         }
       }
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, timeout + 1000);
+      });
     },
     getDropdownLabel: function (index) {
       const { NPKA, NPKB, noNPK } = this.answer[index];
@@ -70,12 +94,19 @@ export default {
         return [];
       }
     },
-    startExperiment: function () {
+    startExperiment: async function () {
       this.store.issue3.answer = this.answer;
+      this.buttonLock = true;
       const [A_answer, B_answer, C_answer] = this.answer;
-      this.watering(this.$refs.plateA_Ref, A_answer);
-      this.watering(this.$refs.plateB_Ref, B_answer);
-      this.watering(this.$refs.plateC_Ref, C_answer);
+      const refList = [
+        this.$refs.plateA_Ref,
+        this.$refs.plateB_Ref,
+        this.$refs.plateC_Ref,
+      ];
+      await this.watering(refList[0], A_answer);
+      await this.watering(refList[1], B_answer);
+      await this.watering(refList[2], C_answer);
+      this.buttonLock = false;
     },
   },
 };
@@ -269,7 +300,9 @@ export default {
           <p v-for="item in getDropdownLabel(2)">{{ item }}</p>
         </div>
         <div style="margin-right: 30px">
-          <el-button @click="startExperiment">开始实验</el-button>
+          <el-button @click="startExperiment" :disabled="buttonLock"
+            >开始实验</el-button
+          >
         </div>
       </div>
     </div>

@@ -113,13 +113,17 @@ export default {
       }
       const id = setInterval(() => {
         draw();
-      }, 50);
+      }, 40);
       setTimeout(() => {
         drops.length = 0;
         clearInterval(id);
+        // bottle_ctx.clearRect(0, 0, 240, 250);
+        animation_ctx.clearRect(0, 0, 240, 250);
+      }, 2000);
+      setTimeout(() => {
         bottle_ctx.clearRect(0, 0, 240, 250);
-      }, 4000);
-      draw();
+      }, 1500);
+      // draw();
     },
     flower(state) {
       if (state === 1) {
