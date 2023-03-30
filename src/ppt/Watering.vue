@@ -110,6 +110,7 @@ export default {
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
                 <p style="line-height: 1; padding-top: 5px">化肥A</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"
@@ -169,6 +170,7 @@ export default {
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
                 <p style="line-height: 1; padding-top: 5px">化肥A</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"
@@ -235,6 +237,7 @@ export default {
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
                 <p style="line-height: 1; padding-top: 5px">化肥A</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"
