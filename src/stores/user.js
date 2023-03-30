@@ -9,6 +9,9 @@ export const useUserStore = defineStore("user", {
       answers1: "",
       answers2: "",
     },
+    issue3: {
+      answer: [],
+    },
     issue4: {
       answers: "",
     },

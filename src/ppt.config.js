@@ -20,7 +20,7 @@ export default [
   {
     index: 4,
     title: "问题3",
-    left: import("../src/ppt/Fertilizer.vue"),
+    left: import("../src/ppt/Watering.vue"),
     right: import("../src/ppt/SelectFertilizerText.vue"),
   },
   {

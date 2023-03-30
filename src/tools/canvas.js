@@ -16,8 +16,8 @@ export class WaterDrop {
   constructor() {
     this.x = 200;
     this.y = 90;
-    this.vx = -Math.random() * 3 - 2;
-    this.vy = (Math.random() * 0.3 + 0.4) * 10 - 2;
+    this.vx = -Math.random() * 3.3 - 2;
+    this.vy = (Math.random() * 0.3 + 0.35) * 10 - 2;
   }
   draw(ctx) {
     if (this.y < canvasHeight - 57) {

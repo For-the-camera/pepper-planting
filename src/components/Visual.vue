@@ -16,7 +16,7 @@ import flower2 from "../assets/image/flower2.png";
 import flower3 from "../assets/image/flower3.png";
 let renderList = [];
 export default {
-  name: "visual",
+  name: "Visual",
   props: {
     state: {
       type: Number,
@@ -110,12 +110,12 @@ export default {
       }
       const id = setInterval(() => {
         draw();
-      }, 10);
+      }, 50);
       setTimeout(() => {
         drops.length = 0;
         clearInterval(id);
         bottle_ctx.clearRect(0, 0, 240, 250);
-      }, 1000);
+      }, 4000);
       draw();
     },
     flower(state) {
