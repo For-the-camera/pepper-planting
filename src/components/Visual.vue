@@ -89,12 +89,15 @@ export default {
         }
       }
     },
-    watering(num) {
+    watering(num, tip) {
       const animationEl = this.$refs.animationRef;
       const animation_ctx = animationEl.getContext("2d");
       const bottleEl = this.$refs.bottleRef;
       const bottle_ctx = bottleEl.getContext("2d");
       drawImage(bottle_ctx, spray_bottle, 180, 60);
+      bottle_ctx.fillStyle = "red";
+      bottle_ctx.font = "15px serif";
+      bottle_ctx.fillText(tip, 190, 60);
       // 创建喷水数量
       let drops = [];
       // 创建drops实例

@@ -46,10 +46,10 @@ export default {
     watering(ref, answer) {
       if (answer.noNPK !== "1") {
         if (answer.NPKA !== 0) {
-          ref.watering(answer.NPKA * 3);
+          ref.watering(answer.NPKA * 3, "化肥A");
           if (answer.NPKB !== 0) {
             setTimeout(() => {
-              ref.watering(answer.NPKB * 3);
+              ref.watering(answer.NPKB * 3, "化肥B");
             }, 5000);
           }
         }
