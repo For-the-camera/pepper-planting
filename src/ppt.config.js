@@ -44,8 +44,8 @@ export default [
   {
     index: 8,
     title: "问题7",
-    single: true,
-    page: import("../src/ppt/Issue7.vue"),
+    left: import("../src/ppt/Issue7Left.vue"),
+    right: import("../src/ppt/Issue7Right.vue"),
   },
   {
     index: 9,
