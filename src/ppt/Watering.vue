@@ -151,7 +151,9 @@ export default {
                 ></el-slider>
               </el-dropdown-item>
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
+                <p style="line-height: 1; padding-top: 5px">化肥B</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"
@@ -211,7 +213,9 @@ export default {
                 ></el-slider>
               </el-dropdown-item>
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
+                <p style="line-height: 1; padding-top: 5px">化肥B</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"
@@ -278,7 +282,9 @@ export default {
                 ></el-slider>
               </el-dropdown-item>
               <el-dropdown-item style="height: 80px; padding: 10px 20px">
+                <p style="line-height: 1; padding-top: 5px">化肥B</p>
                 <el-slider
+                  :show-tooltip="false"
                   :min="0"
                   :max="20"
                   :step="5"

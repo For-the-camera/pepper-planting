@@ -1,9 +1,12 @@
 .bg-single {
   background-color: #fff2cc;
+  border: 0.1rem solid #353b48;
 }
 .bg-left {
   background-color: #e2f0d9;
+  border: 0.1rem solid #353b48;
 }
 .bg-right {
   background-color: #fff2cc;
+  border: 0.1rem solid #353b48;
 }
