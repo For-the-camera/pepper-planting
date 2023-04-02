@@ -110,7 +110,7 @@ $ppt-padding: 5px;
   flex-direction: column;
   .ppt-content {
     flex-grow: 2;
-    margin-top: 20px;
+    margin-top: 10px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
@@ -129,7 +129,7 @@ $ppt-padding: 5px;
   }
   .single-page {
     flex-grow: 2;
-    margin-top: 20px;
+    margin-top: 10px;
     border: $ppt-border solid black;
     padding: $ppt-padding;
   }

@@ -4,9 +4,23 @@ export default {
   name: "FlowerText",
   props: {},
   data() {
-    return { store: useUserStore() };
+    const store = useUserStore();
+    return {
+      store,
+      options: [
+        { label: "植株高度", value: "A" },
+        { label: "花的数量", value: "B" },
+        { label: "植株的高度和花的数量", value: "C" },
+      ],
+    };
   },
-  methods: {},
+  methods: {
+    selectOption: function (index)  {
+      this.store.issue5.choice === index
+        ? (this.store.issue5.choice = "")
+        : (this.store.issue5.choice = index);
+    },
+  },
 };
 </script>
 <template>
@@ -30,36 +44,19 @@ export default {
           store.issue5.choice
         }}）
       </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue5.choice = 'A';
-          }
-        "
-      >
-        A: 植株高度
-      </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue5.choice = 'B';
-          }
-        "
-      >
-        B: 花的数量
-      </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue5.choice = 'C';
-          }
-        "
-      >
-        C: 植株高度和花的数量
-      </p>
+      <ul>
+        <el-radio-group v-model="store.issue5.choice">
+          <li
+            v-for="item in options"
+            :key="item.value"
+            @click="selectOption(item.value)"
+          >
+            <el-radio :label="item.value">{{ "" }}</el-radio>
+            {{ item.value }}.
+            {{ item.label }}
+          </li>
+        </el-radio-group>
+      </ul>
       <p><strong>问题5.2 </strong>请解释选择上述选项的原因：</p>
       <el-input
         type="textarea"
@@ -71,4 +68,14 @@ export default {
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped lang="scss">
+ul {
+  list-style: none;
+  list-style-position: inside;
+  li {
+    cursor: pointer;
+    padding: 10px 0;
+    font-size: 22px;
+  }
+}
+</style>

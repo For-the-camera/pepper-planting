@@ -34,11 +34,12 @@ export default {
       </p>
       <p>请借助计算器分析数据，请回答：</p>
       <p>
-        1号育苗盘内每一棵苗的花的数量：
-        <el-button type="primary" @click="openCalculator(0)">{{
-          store.issue7.flower[0].answer
-        }}</el-button
-        >朵（保留1位小数）
+        1号育苗盘内每一棵苗的花的数量：<el-button
+          type="primary"
+          @click="openCalculator(0)"
+          >{{ store.issue7.flower[0].answer }}</el-button
+        >
+        朵（保留1位小数）
       </p>
       <p>
         2号育苗盘内每一棵苗的花的数量：<el-button

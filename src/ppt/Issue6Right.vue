@@ -34,11 +34,12 @@ export default {
       </p>
       <p>请借助计算器分析数据，请回答：</p>
       <p>
-        1号育苗盘内植株高度：
-        <el-button type="primary" @click="openCalculator(0)">{{
-          store.issue6.height[0].answer
-        }}</el-button
-        >cm（保留1位小数）
+        1号育苗盘内植株高度：<el-button
+          type="primary"
+          @click="openCalculator(0)"
+          >{{ store.issue6.height[0].answer }}</el-button
+        >
+        cm（保留1位小数）
       </p>
       <p>
         2号育苗盘内植株高度：<el-button

@@ -8,7 +8,16 @@ export default {
   },
   props: {},
   data() {
-    return { store: useUserStore(), mark: false, nowIssue: 0 };
+    return {
+      store: useUserStore(),
+      mark: false,
+      nowIssue: 0,
+      options: [
+        { label: "化肥A", value: "A" },
+        { label: "化肥B", value: "B" },
+        { label: "实验结果不能说明哪种肥料效果更好", value: "C" },
+      ],
+    };
   },
   methods: {
     onConfirm(val) {
@@ -18,6 +27,11 @@ export default {
     openCalculator(nowIssue) {
       this.mark = true;
       this.nowIssue = nowIssue;
+    },
+    selectOption(index) {
+      this.store.issue8.choice === index
+        ? (this.store.issue8.choice = "")
+        : (this.store.issue8.choice = index);
     },
   },
 };
@@ -36,36 +50,19 @@ export default {
       <p>
         基于数据，请回答实验结果显示哪种化肥效果更好？{{ store.issue8.choice }}
       </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue8.choice = 'A';
-          }
-        "
-      >
-        A. 化肥A
-      </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue8.choice = 'B';
-          }
-        "
-      >
-        B. 化肥B
-      </p>
-      <p
-        style="cursor: pointer"
-        @click="
-          () => {
-            store.issue8.choice = 'C';
-          }
-        "
-      >
-        C. 实验结果不能说明哪种肥料效果最好
-      </p>
+      <ul>
+        <el-radio-group v-model="store.issue8.choice">
+          <li
+            v-for="item in options"
+            :key="item.value"
+            @click="selectOption(item.value)"
+          >
+            <el-radio :label="item.value">{{ "" }}</el-radio>
+            {{ item.value }}.
+            {{ item.label }}
+          </li>
+        </el-radio-group>
+      </ul>
       <p>请解释你选择上述选项的原因：</p>
       <el-input
         type="textarea"
@@ -96,5 +93,14 @@ $text-size: 22px;
   left: 0;
   position: absolute;
   opacity: 0.6;
+}
+ul {
+  list-style: none;
+  list-style-position: inside;
+  li {
+    font-size: $text-size;
+    padding: 10px 0;
+    cursor: pointer;
+  }
 }
 </style>

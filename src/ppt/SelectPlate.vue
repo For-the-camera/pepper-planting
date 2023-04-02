@@ -94,7 +94,7 @@ export default {
         border: choiceA,
         'border-radius-round': choiceA,
       }"
-      style="cursor: pointer"
+      style="cursor: pointer;"
       @click="
         () => {
           choiceA = !choiceA;
