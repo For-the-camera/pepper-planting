@@ -29,7 +29,7 @@ export default {
         v-model="store.issue2.answers1"
       >
       </el-input>
-      <p><strong>问题2.2</strong> 为什么每个育苗盘中的辣椒苗均为10株？</p>
+      <p><strong>问题2.2</strong> 为什么每个育苗盘中的辣椒数量都一样？</p>
       <el-input
         type="textarea"
         :rows="3"
