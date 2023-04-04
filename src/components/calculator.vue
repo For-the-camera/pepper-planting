@@ -179,7 +179,17 @@ export default {
         "
         style="grid-area: Divide"
       >
-        /
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M19 13H5v-2h14v2m-7-8a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0 10a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2Z"
+          />
+        </svg>
       </div>
       <div
         :class="{
@@ -607,6 +617,7 @@ export default {
             confirm_button: true,
             equal_button_active: keyboardActivateCtrl.Confirm,
           }"
+          style="cursor: pointer"
           @mousedown="
             () => {
               keyboardActivateCtrl.Confirm = true;
