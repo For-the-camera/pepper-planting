@@ -21,7 +21,10 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-left border-radius-round grid-2-1 gap-1">
+  <div
+    class="bg-left border-radius-round grid-2-1 gap-1"
+    style="user-select: none"
+  >
     <div class="grid grid-1-2">
       <div style="position: relative">
         <p

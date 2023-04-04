@@ -15,7 +15,7 @@ export default {
     };
   },
   methods: {
-    selectOption: function (index)  {
+    selectOption: function (index) {
       this.store.issue5.choice === index
         ? (this.store.issue5.choice = "")
         : (this.store.issue5.choice = index);
@@ -76,6 +76,7 @@ ul {
     cursor: pointer;
     padding: 10px 0;
     font-size: 22px;
+    user-select: none;
   }
 }
 </style>
