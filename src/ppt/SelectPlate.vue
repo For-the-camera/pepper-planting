@@ -9,10 +9,10 @@ export default {
   props: {},
   data() {
     return {
-      plateA: 1,
-      plateB: 1,
-      plateC: 1,
-      plateD: 1,
+      plateA: 0,
+      plateB: 0,
+      plateC: 0,
+      plateD: 0,
 
       choiceA: false,
       choiceB: false,
@@ -94,7 +94,7 @@ export default {
         border: choiceA,
         'border-radius-round': choiceA,
       }"
-      style="cursor: pointer;"
+      style="cursor: pointer"
       @click="
         () => {
           choiceA = !choiceA;
@@ -104,8 +104,8 @@ export default {
     >
       <Visual :state="0" ref="plateA_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p>1号育苗盘</p>
-        <p>{{ plateA }}株辣椒苗</p>
+        <p><el-radio v-model="choiceA" :label="true">1号育苗盘</el-radio></p>
+        <p style="user-select: none">{{ plateA }}株辣椒苗</p>
         <el-select v-model="plateA" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -132,8 +132,8 @@ export default {
     >
       <Visual :state="0" ref="plateB_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p>2号育苗盘</p>
-        <p>{{ plateB }}株辣椒苗</p>
+        <p><el-radio v-model="choiceB" :label="true">2号育苗盘</el-radio></p>
+        <p style="user-select: none">{{ plateB }}株辣椒苗</p>
         <el-select v-model="plateB" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -160,8 +160,8 @@ export default {
     >
       <Visual :state="0" ref="plateC_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p>3号育苗盘</p>
-        <p>{{ plateC }}株辣椒苗</p>
+        <p><el-radio v-model="choiceC" :label="true">3号育苗盘</el-radio></p>
+        <p style="user-select: none">{{ plateC }}株辣椒苗</p>
         <el-select v-model="plateC" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -188,8 +188,8 @@ export default {
     >
       <Visual :state="0" ref="plateD_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p>4号育苗盘</p>
-        <p>{{ plateD }}株辣椒苗</p>
+        <p><el-radio v-model="choiceD" :label="true">4号育苗盘</el-radio></p>
+        <p style="user-select: none">{{ plateD }}株辣椒苗</p>
         <el-select v-model="plateD" placeholder="请选择">
           <el-option
             v-for="item in options"
