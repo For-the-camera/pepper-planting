@@ -13,19 +13,19 @@ export default {
       store: useUserStore(),
       answer: [
         {
-          NPKA: 10,
+          NPKA: 0,
           NPKB: 0,
           noNPK: "0",
         },
         {
           NPKA: 0,
-          NPKB: 10,
+          NPKB: 0,
           noNPK: "0",
         },
         {
           NPKA: 0,
           NPKB: 0,
-          noNPK: "1",
+          noNPK: "0",
         },
       ],
       marks: {
