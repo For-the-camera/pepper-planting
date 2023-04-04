@@ -14,8 +14,8 @@ export default {
   },
   methods: {},
   mounted() {
-    this.$refs.plateA_Ref.flower(1);
-    this.$refs.plateB_Ref.flower(2);
+    this.$refs.plateA_Ref.flower(2);
+    this.$refs.plateB_Ref.flower(1);
     this.$refs.plateC_Ref.flower(3);
   },
 };
