@@ -34,6 +34,7 @@ export default {
             left: 38%;
             z-index: 1;
             font-size: 18px;
+            width: fit-content;
           "
         >
           10株辣椒苗
@@ -53,6 +54,7 @@ export default {
             left: 38%;
             z-index: 1;
             font-size: 18px;
+            width: fit-content;
           "
         >
           10株辣椒苗
@@ -73,6 +75,7 @@ export default {
           left: 23%;
           z-index: 1;
           font-size: 18px;
+          width: fit-content;
         "
       >
         10株辣椒苗
