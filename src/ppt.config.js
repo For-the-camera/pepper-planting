@@ -43,13 +43,13 @@ export default [
   },
   {
     index: 8,
-    title: "问题7",
+    title: "阅读材料",
     left: import("../src/ppt/Issue7Left.vue"),
     right: import("../src/ppt/Issue7Right.vue"),
   },
   {
     index: 9,
-    title: "问题8",
+    title: "问题7",
     left: import("../src/ppt/Issue8Left.vue"),
     right: import("../src/ppt/Issue8Right.vue"),
   },
