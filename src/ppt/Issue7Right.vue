@@ -27,36 +27,15 @@ export default {
     class="issue flex flex-col justify-items-center bg-right border-radius-round h-full"
     style="position: relative"
   >
-    <div class="space-y-3">
+    <div class="space-y-3" style="padding-top: 25%">
       <p>
-        <strong>问题7</strong>
+        阅读材料
         小红收集的育苗盘中花的数量数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
       </p>
-      <p>请借助计算器分析数据，请回答：</p>
-      <p>
-        1号育苗盘内每一棵苗的花的数量：<el-button
-          type="primary"
-          @click="openCalculator(0)"
-          >{{ store.issue7.flower[0].answer }}</el-button
-        >
-        朵（保留1位小数）
-      </p>
-      <p>
-        2号育苗盘内每一棵苗的花的数量：<el-button
-          type="primary"
-          @click="openCalculator(1)"
-          >{{ store.issue7.flower[1].answer }}</el-button
-        >
-        朵（保留1位小数）
-      </p>
-      <p>
-        3号育苗盘内每一棵苗的花的数量：<el-button
-          type="primary"
-          @click="openCalculator(2)"
-          >{{ store.issue7.flower[2].answer }}</el-button
-        >
-        朵（保留1位小数）
-      </p>
+      <p>小红对花的数量数据进行科学分析，得出：</p>
+      <p>1号育苗盘内花的平均数量为14.2朵；</p>
+      <p>2号育苗盘内花的平均数量为21.5朵；</p>
+      <p>3号育苗盘内花的平均数量为9.7朵。</p>
     </div>
     <div
       :class="{ 'h-full': true, 'border-radius-round': true, mark: mark }"
