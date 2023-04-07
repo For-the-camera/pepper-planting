@@ -27,7 +27,7 @@ export default {
     class="issue flex flex-col justify-items-center bg-right border-radius-round h-full"
     style="position: relative"
   >
-    <div class="space-y-3">
+    <div class="space-y-3" style="padding-top: 20%">
       <p>
         <strong>问题6</strong>
         小明收集的育苗盘中植株高度数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
@@ -38,22 +38,6 @@ export default {
           type="primary"
           @click="openCalculator(0)"
           >{{ store.issue6.height[0].answer }}</el-button
-        >
-        cm（保留1位小数）
-      </p>
-      <p>
-        2号育苗盘内植株高度：<el-button
-          type="primary"
-          @click="openCalculator(1)"
-          >{{ store.issue6.height[1].answer }}</el-button
-        >
-        cm（保留1位小数）
-      </p>
-      <p>
-        3号育苗盘内植株高度：<el-button
-          type="primary"
-          @click="openCalculator(2)"
-          >{{ store.issue6.height[2].answer }}</el-button
         >
         cm（保留1位小数）
       </p>
