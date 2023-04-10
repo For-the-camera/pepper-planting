@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     plant(num) {
+      console.log(33, num);
       this.botany_ctx.clearRect(0, 0, 240, 250);
       let positionX = [
         120 - 46,
@@ -53,39 +54,41 @@ export default {
         120 - 46 - 46 + 20,
         120 - 20,
       ];
-      if (num <= 10) {
-        for (let i = 0; i < num; i++) {
-          drawImage(
-            this.botany_ctx,
-            this.seedling,
-            positionX[i],
-            coordYTransform(30, 112)
-          );
-        }
-      } else {
-        if (num > 10 && num <= 20) {
-          drawImage(
-            this.botany_ctx,
-            this.seedling20,
-            0,
-            coordYTransform(0, 171)
-          );
-        }
-        if (num > 20 && num <= 30) {
-          drawImage(
-            this.botany_ctx,
-            this.seedling30,
-            0,
-            coordYTransform(0, 171)
-          );
-        }
-        if (num > 30 && num <= 40) {
-          drawImage(
-            this.botany_ctx,
-            this.seedling40,
-            0,
-            coordYTransform(0, 171)
-          );
+      if (num !== 0) {
+        if (num <= 10) {
+          for (let i = 0; i < num; i++) {
+            drawImage(
+              this.botany_ctx,
+              this.seedling,
+              positionX[i],
+              coordYTransform(30, 112)
+            );
+          }
+        } else {
+          if (num > 10 && num <= 20) {
+            drawImage(
+              this.botany_ctx,
+              this.seedling20,
+              0,
+              coordYTransform(0, 171)
+            );
+          }
+          if (num > 20 && num <= 30) {
+            drawImage(
+              this.botany_ctx,
+              this.seedling30,
+              0,
+              coordYTransform(0, 171)
+            );
+          }
+          if (num > 30 && num <= 40) {
+            drawImage(
+              this.botany_ctx,
+              this.seedling40,
+              0,
+              coordYTransform(0, 171)
+            );
+          }
         }
       }
     },
@@ -142,7 +145,7 @@ export default {
     const soil_ctx = soilEl.getContext("2d");
     drawImage(soil_ctx, this.soil_img, 0, coordYTransform(0, 57));
     if (this.state == 0) {
-      this.plant(1);
+      this.plant(0);
     }
     if (this.state == 1) {
       this.plant(10);
