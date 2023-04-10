@@ -83,7 +83,7 @@ export default {
       const { NPKA, NPKB, noNPK } = this.answer[index];
 
       if (noNPK === "1") {
-        return ["不选择化肥"];
+        return [""];
       } else if (NPKA === 0 && NPKB !== 0) {
         return ["化肥B (" + NPKB + "ml)"];
       } else if (NPKB === 0 && NPKA !== 0) {
@@ -128,50 +128,48 @@ export default {
         </p>
         <Visual :state="1" ref="plateA_Ref"></Visual>
         <!-- 1号 -->
-        <div style="padding-left: 25px">
-          <el-dropdown
-            :hide-on-click="false"
-            trigger="click"
-            @command="handleCommand"
+        <div style="padding-left: 30px; width: 90%">
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
           >
-            <span class="el-dropdown-link">
-              1号育苗盘<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu style="width: 200px" slot="dropdown">
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥A</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[0].NPKA"
-                  :disabled="answer[0].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥B</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[0].NPKB"
-                  :disabled="answer[0].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item command="0" style="z-index: 1">
-                <el-radio
-                  style="z-index: -1"
-                  v-model="answer[0].noNPK"
-                  label="1"
-                  >不施化肥</el-radio
-                >
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+            <span>化肥A</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              v-model="answer[0].NPKA"
+              :marks="marks"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
+          >
+            <span>化肥B</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              :marks="marks"
+              v-model="answer[0].NPKB"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div style="margin-top: 15px">
+            <el-radio
+              v-model="answer[0].noNPK"
+              label="1"
+              style="margin-right: 5px"
+              >{{ "" }}</el-radio
+            >
+            <span
+              @click="answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1'"
+              style="cursor: pointer; user-select: none"
+              >不施化肥</span
+            >
+          </div>
           <p v-for="item in getDropdownLabel(0)">{{ item }}</p>
         </div>
       </div>
@@ -190,50 +188,48 @@ export default {
 
         <Visual :state="1" ref="plateB_Ref"></Visual>
         <!-- 2号 -->
-        <div style="padding-left: 25px">
-          <el-dropdown
-            :hide-on-click="false"
-            trigger="click"
-            @command="handleCommand"
+        <div style="padding-left: 30px; width: 90%">
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
           >
-            <span class="el-dropdown-link">
-              2号育苗盘<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu style="width: 200px" slot="dropdown">
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥A</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[1].NPKA"
-                  :disabled="answer[1].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥B</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[1].NPKB"
-                  :disabled="answer[1].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item command="1" style="z-index: 1">
-                <el-radio
-                  style="z-index: -1"
-                  v-model="answer[1].noNPK"
-                  label="1"
-                  >不施化肥</el-radio
-                >
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+            <span>化肥A</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              v-model="answer[1].NPKA"
+              :marks="marks"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
+          >
+            <span>化肥B</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              :marks="marks"
+              v-model="answer[1].NPKB"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div style="margin-top: 15px;position: relative;z-index: 10;">
+            <el-radio
+              v-model="answer[1].noNPK"
+              label="1"
+              style="margin-right: 5px"
+              >{{ "" }}</el-radio
+            >
+            <span
+              @click="answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1'"
+              style="cursor:pointer; user-select: none;z-index:5"
+              >不施化肥</span
+            >
+          </div>
           <p v-for="item in getDropdownLabel(1)">{{ item }}</p>
         </div>
       </div>
@@ -250,7 +246,54 @@ export default {
       >
         10株辣椒苗
       </p>
-      <Visual :state="1" ref="plateC_Ref"></Visual>
+      <div style="display: flex;justify-content: space-between;padding: 0 30px">
+        <Visual :state="1" ref="plateC_Ref"></Visual>
+        <div style="width: 40%;display: flex;flex-direction: column;margin:60px 40px 0 0;">
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
+          >
+            <span>化肥A</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              v-model="answer[2].NPKA"
+              :marks="marks"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div
+            style="display: flex; gap: 10px; width: 100%; align-items: center"
+          >
+            <span>化肥B</span>
+            <el-slider
+              :show-tooltip="false"
+              :min="0"
+              :max="20"
+              :step="5"
+              :marks="marks"
+              v-model="answer[2].NPKB"
+              style="width: 70%"
+            ></el-slider>
+          </div>
+          <div style="margin-top: 15px">
+            <el-radio
+              v-model="answer[2].noNPK"
+              label="1"
+              style="margin-right: 5px"
+              >{{ "" }}</el-radio
+            >
+            <span
+              @click="answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1'"
+              style="cursor: pointer; user-select: none"
+              >不施化肥</span
+            >
+          </div>
+          <p v-for="item in getDropdownLabel(2)">{{ item }}</p>
+        </div>
+      </div>
+      
       <!--  -->
       <div
         style="
@@ -259,53 +302,8 @@ export default {
           justify-content: space-between;
         "
       >
-        <div>
-          <el-dropdown
-            :hide-on-click="false"
-            trigger="click"
-            @command="handleCommand"
-          >
-            <span class="el-dropdown-link">
-              3号育苗盘<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu style="width: 200px" slot="dropdown">
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥A</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[2].NPKA"
-                  :disabled="answer[2].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item style="height: 80px; padding: 10px 20px">
-                <p style="line-height: 1; padding-top: 5px">化肥B</p>
-                <el-slider
-                  :show-tooltip="false"
-                  :min="0"
-                  :max="20"
-                  :step="5"
-                  :marks="marks"
-                  v-model="answer[2].NPKB"
-                  :disabled="answer[2].noNPK === '1'"
-                ></el-slider>
-              </el-dropdown-item>
-              <el-dropdown-item command="2" style="z-index: 1">
-                <el-radio
-                  style="z-index: -1"
-                  v-model="answer[2].noNPK"
-                  label="1"
-                  >不施化肥</el-radio
-                >
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-          <p v-for="item in getDropdownLabel(2)">{{ item }}</p>
-        </div>
-        <div style="margin-right: 30px">
+      
+        <div style="margin-right: 30px;display: flex;justify-content: end;width: 100%;">
           <el-button @click="startExperiment" :disabled="buttonLock"
             >开始实验</el-button
           >
