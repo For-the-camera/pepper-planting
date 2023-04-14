@@ -154,4 +154,7 @@ $wait-color: #bbb7ad;
     color: $wait-color;
   }
 }
+.step-title {
+  font-size: 15px;
+}
 </style>

@@ -25,19 +25,19 @@ export default [
   },
   {
     index: 5,
-    title: "问题4",
+    title: "阅读材料",
     left: import("../src/ppt/Fertilizer.vue"),
     right: import("../src/ppt/FertilizerText.vue"),
   },
   {
     index: 6,
-    title: "问题5",
+    title: "问题4",
     left: import("../src/ppt/Flower.vue"),
     right: import("../src/ppt/FlowerText.vue"),
   },
   {
     index: 7,
-    title: "问题6",
+    title: "问题5",
     left: import("../src/ppt/Issue6Left.vue"),
     right: import("../src/ppt/Issue6Right.vue"),
   },
@@ -49,7 +49,7 @@ export default [
   },
   {
     index: 9,
-    title: "问题7",
+    title: "问题6",
     left: import("../src/ppt/Issue8Left.vue"),
     right: import("../src/ppt/Issue8Right.vue"),
   },
