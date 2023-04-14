@@ -1,10 +1,11 @@
 <script>
 import { useUserStore } from "../stores/user";
-import Calculator from "../components/Calculator.vue";
+// import Calculator from "../components/Calculator.vue";
+import SelectiveHeight from "../components/SelectiveHeight.vue";
 export default {
   name: "IssueSixRight",
   components: {
-    Calculator,
+    SelectiveHeight,
   },
   props: {},
   data() {
@@ -15,7 +16,7 @@ export default {
       this.mark = false;
       this.store.issue6.height[this.nowIssue] = val;
     },
-    openCalculator(nowIssue) {
+    openDialog(nowIssue) {
       this.mark = true;
       this.nowIssue = nowIssue;
     },
@@ -32,16 +33,28 @@ export default {
         <strong>问题6</strong>
         小明收集的育苗盘中植株高度数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
       </p>
-      <p>请借助计算器分析数据，请回答：</p>
+      <p>请点击下方蓝色方框，分析：</p>
       <p>
-        1号育苗盘内植株高度：<el-button
-          type="primary"
-          @click="openCalculator(0)"
-          >{{ store.issue6.height[0].answer }}</el-button
-        >
+        1号育苗盘内植株高度：
+        <el-button type="primary" @click="openDialog(0)">{{
+          store.issue6.height[0].answer
+        }}</el-button>
         cm（保留1位小数）
       </p>
-
+      <p>
+        2号育苗盘内植株高度：
+        <el-button type="primary" @click="openDialog(1)">{{
+          store.issue6.height[1].answer
+        }}</el-button>
+        cm（保留1位小数）
+      </p>
+      <p>
+        3号育苗盘内植株高度：
+        <el-button type="primary" @click="openDialog(2)">{{
+          store.issue6.height[2].answer
+        }}</el-button>
+        cm（保留1位小数）
+      </p>
       <p>请解释你是如何得出上述数据的：</p>
       <el-input
         type="textarea"
@@ -52,9 +65,16 @@ export default {
       </el-input>
     </div>
     <div
+      v-show="mark"
       :class="{ 'h-full': true, 'border-radius-round': true, mark: mark }"
     ></div>
-    <Calculator v-show="mark" @onConfirm="onConfirm"></Calculator>
+    <SelectiveHeight
+      :no="nowIssue + 1"
+      class="selectiveHeight"
+      v-show="mark"
+      @onConfirm="onConfirm"
+    ></SelectiveHeight>
+    <!-- <Calculator v-show="mark" @onConfirm="onConfirm"></Calculator> -->
   </div>
 </template>
 <style lang="scss" scoped>
@@ -72,5 +92,11 @@ $text-size: 22px;
   left: 0;
   position: absolute;
   opacity: 0.6;
+}
+.selectiveHeight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 </style>
