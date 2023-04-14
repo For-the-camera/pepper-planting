@@ -95,7 +95,7 @@ export default {
         'border-radius-round': choiceA,
       }"
       style="cursor: pointer"
-      @click="
+      @click.prevent="
         () => {
           choiceA = !choiceA;
           submitStore();
@@ -104,7 +104,9 @@ export default {
     >
       <Visual :state="0" ref="plateA_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p><el-radio v-model="choiceA" :label="true">1号育苗盘</el-radio></p>
+        <p>
+          <el-radio v-model="choiceA" :label="true">1号育苗盘</el-radio>
+        </p>
         <p style="user-select: none">{{ plateA }}株辣椒苗</p>
         <el-select v-model="plateA" placeholder="请选择">
           <el-option
@@ -123,7 +125,7 @@ export default {
         'border-radius-round': choiceB,
       }"
       style="cursor: pointer"
-      @click="
+      @click.prevent="
         () => {
           choiceB = !choiceB;
           submitStore();
@@ -151,7 +153,7 @@ export default {
         'border-radius-round': choiceC,
       }"
       style="cursor: pointer"
-      @click="
+      @click.prevent="
         () => {
           choiceC = !choiceC;
           submitStore();
@@ -179,7 +181,7 @@ export default {
         'border-radius-round': choiceD,
       }"
       style="cursor: pointer"
-      @click="
+      @click.prevent="
         () => {
           choiceD = !choiceD;
           submitStore();
