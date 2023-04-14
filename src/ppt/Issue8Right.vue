@@ -55,7 +55,7 @@ export default {
           <li
             v-for="item in options"
             :key="item.value"
-            @click="selectOption(item.value)"
+            @click.prevent="selectOption(item.value)"
           >
             <el-radio :label="item.value">{{ "" }}</el-radio>
             {{ item.value }}.
