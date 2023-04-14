@@ -30,7 +30,7 @@ export default {
   >
     <div class="space-y-3" style="padding-top: 20%">
       <p>
-        <strong>问题6</strong>
+        <strong>问题5</strong>
         小明收集的育苗盘中植株高度数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
       </p>
       <p>请点击下方蓝色方框，分析：</p>

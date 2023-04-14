@@ -37,7 +37,7 @@ export default {
         六周后的某个时间为实验数据收集阶段，小明测量了辣椒的植株高度，小红测量了辣椒的花的数量。
       </p>
       <p>
-        <strong> 问题5.1</strong>
+        <strong> 问题4.1</strong>
         请问为了回答哪种肥料能促进植物产出更多辣椒这个问题，你认为需要收集的数据是（{{
           store.issue5.choice
         }}）
@@ -55,7 +55,7 @@ export default {
           </li>
         </el-radio-group>
       </ul>
-      <p><strong>问题5.2 </strong>请解释选择上述选项的原因：</p>
+      <p><strong>问题4.2 </strong>请解释选择上述选项的原因：</p>
       <el-input
         type="textarea"
         :rows="4"
