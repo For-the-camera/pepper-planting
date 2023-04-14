@@ -18,18 +18,20 @@ export default {
       class="space-y-3"
     >
       <p>
-        <strong>问题4</strong>
+        阅读材料
         为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，左图为一种合理的实验设置。
       </p>
 
-      <p>关注育苗盘中的化肥量，请问为什么3号育苗盘的化肥量是0ml？</p>
-      <el-input
+      <p>
+        根据左图的实验设置开展实验，在辣椒生长的过程中，每天向每个育苗盘中浇等量的水。
+      </p>
+      <!-- <el-input
         type="textarea"
         :rows="4"
         placeholder="请输入内容"
         v-model="store.issue4.answers"
       >
-      </el-input>
+      </el-input> -->
     </div>
   </div>
 </template>
