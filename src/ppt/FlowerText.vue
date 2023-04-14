@@ -31,9 +31,7 @@ export default {
       style="padding: 20px; font-size: 22px; line-height: 2em"
       class="space-y-3"
     >
-      <p>
-        在辣椒生长的过程中，每天向每个育苗盘中浇等量的水。六周过后，辣椒生长的状况如左图所示。
-      </p>
+      <p>六周过后，辣椒生长的状况如左图所示。</p>
 
       <p>
         六周后的某个时间为实验数据收集阶段，小明测量了辣椒的植株高度，小红测量了辣椒的花的数量。
@@ -49,7 +47,7 @@ export default {
           <li
             v-for="item in options"
             :key="item.value"
-            @click="selectOption(item.value)"
+            @click.prevent="selectOption(item.value)"
           >
             <el-radio :label="item.value">{{ "" }}</el-radio>
             {{ item.value }}.
