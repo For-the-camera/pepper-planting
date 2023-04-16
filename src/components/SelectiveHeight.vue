@@ -100,11 +100,21 @@ export default {
 </script>
 <template>
   <div
-    style="width: 85%; height: 70%; background-color: white; font-size: 14px"
+    style="
+      width: 85%;
+      height: 70%;
+      background-color: white;
+      font-size: 14px;
+      border-radius: 4%;
+      padding: 22px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    "
   >
     <!-- {{ props.no }}号盘内植株高度 -->
     <p>
-      <span> {{ no }}号盘内植株高度=</span>
+      <span> {{ no }}号盘内植株高度= &nbsp;</span>
       <el-select
         v-model="value"
         placeholder="请选择最恰当的数据分析方法"
@@ -119,8 +129,8 @@ export default {
         </el-option>
       </el-select>
     </p>
-    <p>= {{ value }}cm</p>
-    <p>
+    <p>&nbsp;= {{ value }}&nbsp;cm</p>
+    <p style="text-align: right">
       <el-button type="primary" @click="onConfirm">确定</el-button>
     </p>
   </div>
