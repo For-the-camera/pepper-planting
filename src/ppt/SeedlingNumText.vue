@@ -37,6 +37,7 @@ export default {
         v-model="store.issue2.answers2"
       >
       </el-input>
+      <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
     </div>
   </div>
 </template>
