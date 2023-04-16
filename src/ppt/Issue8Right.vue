@@ -1,6 +1,7 @@
 <script>
 import { useUserStore } from "../stores/user";
 import Calculator from "../components/Calculator.vue";
+
 export default {
   name: "IssueEightRight",
   components: {

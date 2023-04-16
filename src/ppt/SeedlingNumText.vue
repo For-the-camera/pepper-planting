@@ -1,5 +1,6 @@
 <script>
 import { useUserStore } from "../stores/user";
+import { isHistoryPage } from "../tools/isHistoryPage";
 export default {
   name: "SeedlingNumText",
   props: {},
@@ -7,6 +8,11 @@ export default {
     return { store: useUserStore() };
   },
   methods: {},
+  computed: {
+    lock: function () {
+      return isHistoryPage();
+    },
+  },
 };
 </script>
 <template>
@@ -23,6 +29,7 @@ export default {
 
       <p><strong>问题2.1</strong> 请问为什么设置3个育苗盘？</p>
       <el-input
+        :disabled="lock"
         type="textarea"
         :rows="3"
         placeholder="请输入内容"
@@ -31,6 +38,7 @@ export default {
       </el-input>
       <p><strong>问题2.2</strong> 为什么每个育苗盘中的辣椒苗数量都一样？</p>
       <el-input
+        :disabled="lock"
         type="textarea"
         :rows="3"
         placeholder="请输入内容"

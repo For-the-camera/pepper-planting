@@ -1,6 +1,7 @@
 <script>
 import Visual from "../components/Visual.vue";
 import { useUserStore } from "../stores/user";
+import { isHistoryPage } from "../tools/isHistoryPage";
 export default {
   name: "SelectPlate",
   components: {
@@ -57,6 +58,9 @@ export default {
     choice: function () {
       return [this.choiceA, this.choiceB, this.choiceC, this.choiceD];
     },
+    lock: function () {
+      return isHistoryPage();
+    },
   },
   methods: {
     submitStore() {
@@ -92,23 +96,28 @@ export default {
     <div
       :class="{
         border: choiceA,
+        notAllowed: lock,
         'border-radius-round': choiceA,
       }"
       style="cursor: pointer"
       @click.prevent="
         () => {
-          choiceA = !choiceA;
-          submitStore();
+          if (!lock) {
+            choiceA = !choiceA;
+            submitStore();
+          }
         }
       "
     >
       <Visual :state="0" ref="plateA_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
         <p>
-          <el-radio v-model="choiceA" :label="true">1号育苗盘</el-radio>
+          <el-radio :disabled="lock" v-model="choiceA" :label="true"
+            >1号育苗盘</el-radio
+          >
         </p>
         <p style="user-select: none">{{ plateA }}株辣椒苗</p>
-        <el-select v-model="plateA" placeholder="请选择">
+        <el-select v-model="plateA" placeholder="请选择" :disabled="lock">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -122,21 +131,28 @@ export default {
     <div
       :class="{
         border: choiceB,
+        notAllowed: lock,
         'border-radius-round': choiceB,
       }"
       style="cursor: pointer"
       @click.prevent="
         () => {
-          choiceB = !choiceB;
-          submitStore();
+          if (!lock) {
+            choiceB = !choiceB;
+            submitStore();
+          }
         }
       "
     >
       <Visual :state="0" ref="plateB_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p><el-radio v-model="choiceB" :label="true">2号育苗盘</el-radio></p>
+        <p>
+          <el-radio :disabled="lock" v-model="choiceB" :label="true"
+            >2号育苗盘</el-radio
+          >
+        </p>
         <p style="user-select: none">{{ plateB }}株辣椒苗</p>
-        <el-select v-model="plateB" placeholder="请选择">
+        <el-select :disabled="lock" v-model="plateB" placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -150,21 +166,28 @@ export default {
     <div
       :class="{
         border: choiceC,
+        notAllowed: lock,
         'border-radius-round': choiceC,
       }"
       style="cursor: pointer"
       @click.prevent="
         () => {
-          choiceC = !choiceC;
-          submitStore();
+          if (!lock) {
+            choiceC = !choiceC;
+            submitStore();
+          }
         }
       "
     >
       <Visual :state="0" ref="plateC_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p><el-radio v-model="choiceC" :label="true">3号育苗盘</el-radio></p>
+        <p>
+          <el-radio :disabled="lock" v-model="choiceC" :label="true"
+            >3号育苗盘</el-radio
+          >
+        </p>
         <p style="user-select: none">{{ plateC }}株辣椒苗</p>
-        <el-select v-model="plateC" placeholder="请选择">
+        <el-select :disabled="lock" v-model="plateC" placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -178,21 +201,28 @@ export default {
     <div
       :class="{
         border: choiceD,
+        notAllowed: lock,
         'border-radius-round': choiceD,
       }"
       style="cursor: pointer"
       @click.prevent="
         () => {
-          choiceD = !choiceD;
-          submitStore();
+          if (!lock) {
+            choiceD = !choiceD;
+            submitStore();
+          }
         }
       "
     >
       <Visual :state="0" ref="plateD_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
-        <p><el-radio v-model="choiceD" :label="true">4号育苗盘</el-radio></p>
+        <p>
+          <el-radio :disabled="lock" v-model="choiceD" :label="true"
+            >4号育苗盘</el-radio
+          >
+        </p>
         <p style="user-select: none">{{ plateD }}株辣椒苗</p>
-        <el-select v-model="plateD" placeholder="请选择">
+        <el-select :disabled="lock" v-model="plateD" placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -205,4 +235,8 @@ export default {
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+.notAllowed {
+  cursor: not-allowed !important;
+}
+</style>

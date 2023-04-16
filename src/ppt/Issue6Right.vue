@@ -36,23 +36,41 @@ export default {
       <p>请点击下方蓝色方框，分析：</p>
       <p>
         1号育苗盘内植株高度：
-        <el-button type="primary" @click="openDialog(0)">{{
-          store.issue6.height[0].answer
-        }}</el-button>
+        <el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(0);
+            }
+          "
+          >{{ store.issue6.height[0].answer }}</el-button
+        >
         cm（保留1位小数）
       </p>
       <p>
         2号育苗盘内植株高度：
-        <el-button type="primary" @click="openDialog(1)">{{
-          store.issue6.height[1].answer
-        }}</el-button>
+        <el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(1);
+            }
+          "
+          >{{ store.issue6.height[1].answer }}</el-button
+        >
         cm（保留1位小数）
       </p>
       <p>
         3号育苗盘内植株高度：
-        <el-button type="primary" @click="openDialog(2)">{{
-          store.issue6.height[2].answer
-        }}</el-button>
+        <el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(2);
+            }
+          "
+          >{{ store.issue6.height[2].answer }}</el-button
+        >
         cm（保留1位小数）
       </p>
       <p>请解释你是如何得出上述数据的：</p>

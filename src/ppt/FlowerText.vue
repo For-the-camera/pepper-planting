@@ -1,5 +1,6 @@
 <script>
 import { useUserStore } from "../stores/user";
+
 export default {
   name: "FlowerText",
   props: {},
@@ -47,7 +48,11 @@ export default {
           <li
             v-for="item in options"
             :key="item.value"
-            @click.prevent="selectOption(item.value)"
+            @click.prevent="
+              () => {
+                selectOption(item.value);
+              }
+            "
           >
             <el-radio :label="item.value">{{ "" }}</el-radio>
             {{ item.value }}.

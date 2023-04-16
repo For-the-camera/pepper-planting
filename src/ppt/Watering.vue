@@ -1,5 +1,6 @@
 <script>
 import { forEach, log } from "mathjs";
+import { isHistoryPage } from "../tools/isHistoryPage";
 import Visual from "../components/Visual.vue";
 import { useUserStore } from "../stores/user";
 export default {
@@ -137,6 +138,11 @@ export default {
       });
     },
   },
+  computed: {
+    lock: function () {
+      return isHistoryPage();
+    },
+  },
 };
 </script>
 <template>
@@ -162,6 +168,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -176,6 +183,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -188,12 +196,17 @@ export default {
           </div>
 
           <div
-            @click.prevent="
-              answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1'
-            "
             style="margin-top: 15px"
+            @click.prevent="
+              () => {
+                if (!lock) {
+                  answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1';
+                }
+              }
+            "
           >
             <el-radio
+              :disabled="lock"
               v-model="answer[0].noNPK"
               label="1"
               style="margin-right: 5px"
@@ -225,6 +238,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -239,6 +253,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -250,12 +265,17 @@ export default {
             ></el-slider>
           </div>
           <div
-            style="margin-top: 15px; position: relative; z-index: 10"
             @click.prevent="
-              answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1'
+              () => {
+                if (!lock) {
+                  answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1';
+                }
+              }
             "
+            style="margin-top: 15px; position: relative; z-index: 10"
           >
             <el-radio
+              :disabled="lock"
               v-model="answer[1].noNPK"
               label="1"
               style="margin-right: 5px"
@@ -298,6 +318,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -312,6 +333,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
+              :disabled="lock"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -323,12 +345,17 @@ export default {
             ></el-slider>
           </div>
           <div
-            @click.prevent="
-              answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1'
-            "
             style="margin-top: 15px"
+            @click.prevent="
+              () => {
+                if (!lock) {
+                  answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1';
+                }
+              }
+            "
           >
             <el-radio
+              :disabled="lock"
               v-model="answer[2].noNPK"
               label="1"
               style="margin-right: 5px"
@@ -358,11 +385,13 @@ export default {
           "
           class="space-y-1"
         >
-          <el-button @click="startExperiment" :disabled="buttonLock"
+          <el-button @click="startExperiment" :disabled="buttonLock || lock"
             >开始实验</el-button
           >
 
-          <el-button @click="reset" :disabled="buttonLock">重置</el-button>
+          <el-button @click="reset" :disabled="buttonLock || lock"
+            >重置</el-button
+          >
         </div>
       </div>
     </div>
