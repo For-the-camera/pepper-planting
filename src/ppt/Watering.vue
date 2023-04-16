@@ -108,6 +108,34 @@ export default {
       await this.watering(refList[2], C_answer);
       this.buttonLock = false;
     },
+
+    reset: function () {
+      this.answer = [
+        {
+          NPKA: 0,
+          NPKB: 0,
+          noNPK: "0",
+        },
+        {
+          NPKA: 0,
+          NPKB: 0,
+          noNPK: "0",
+        },
+        {
+          NPKA: 0,
+          NPKB: 0,
+          noNPK: "0",
+        },
+      ];
+      const refList = [
+        this.$refs.plateA_Ref,
+        this.$refs.plateB_Ref,
+        this.$refs.plateC_Ref,
+      ];
+      refList.forEach((refItem) => {
+        refItem.clear();
+      });
+    },
   },
 };
 </script>
@@ -318,13 +346,16 @@ export default {
           style="
             margin-right: 30px;
             display: flex;
-            justify-content: end;
+            align-items: end;
+            flex-direction: column;
             width: 100%;
           "
         >
           <el-button @click="startExperiment" :disabled="buttonLock"
             >开始实验</el-button
           >
+
+          <el-button @click="reset" :disabled="buttonLock">重置</el-button>
         </div>
       </div>
     </div>

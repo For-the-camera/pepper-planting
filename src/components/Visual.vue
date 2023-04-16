@@ -153,6 +153,11 @@ export default {
         drawImage(this.botany_ctx, flower3, 0, coordYTransform(0, 211));
       }
     },
+    clear() {
+      const bottleEl = this.$refs.bottleRef;
+      const bottle_ctx = bottleEl.getContext("2d");
+      bottle_ctx.clearRect(0, 0, 240, 250);
+    },
   },
   mounted() {
     const canvasEl = this.$refs.canvasRef;
