@@ -19,10 +19,10 @@ export function coordYTransform(y, objHeight) {
 }
 
 export class WaterDrop {
-  constructor() {
-    this.x = 200;
+  constructor(state = true) {
+    this.x = state ? 30 : 200;
     this.y = 90;
-    this.vx = -Math.random() * 3.3 - 2;
+    this.vx = state ? Math.random() * 3.3 + 2 : -Math.random() * 3.3 - 2;
     this.vy = (Math.random() * 0.3 + 0.35) * 10 - 2;
   }
   draw(ctx, color) {

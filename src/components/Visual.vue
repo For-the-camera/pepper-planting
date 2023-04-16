@@ -101,15 +101,16 @@ export default {
       const bottleEl = this.$refs.bottleRef;
       const bottle_ctx = bottleEl.getContext("2d");
 
+      const state = tip === "化肥A" ? true : false;
       bottle_ctx.fillStyle = "red";
       bottle_ctx.font = "15px serif";
-      if (tip !== "化肥A") {
+      if (!state) {
         // 右喷
         drawImage(bottle_ctx, spray_bottle, 180, 60);
         bottle_ctx.fillText(tip, 190, 60);
       } else {
         // 左喷
-        drawImage(bottle_ctx, spray_bottle, 10, 60, true);
+        drawImage(bottle_ctx, spray_bottle, 0, 70, true);
         bottle_ctx.fillText(tip, 20, 60);
       }
 
@@ -117,7 +118,7 @@ export default {
       let drops = [];
       // 创建drops实例
       for (let i = 0; i < num; i++) {
-        drops.push(new WaterDrop());
+        drops.push(new WaterDrop(state));
       }
       // 开始绘制
       function draw() {
@@ -125,7 +126,7 @@ export default {
         for (let i = 0; i < num; i++) {
           drops[i].update(
             animation_ctx,
-            tip === "化肥A" ? "rgba(114, 167, 226)" : "rgba(255, 143, 107)"
+            state ? "rgba(114, 167, 226)" : "rgba(255, 143, 107)"
           );
         }
       }
