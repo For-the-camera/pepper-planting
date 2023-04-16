@@ -102,7 +102,7 @@ export default {
       const bottle_ctx = bottleEl.getContext("2d");
 
       const state = tip === "化肥A" ? true : false;
-      bottle_ctx.fillStyle = "red";
+      bottle_ctx.fillStyle = state ? "rgba(114, 167, 226)" : "red";
       bottle_ctx.font = "15px serif";
       if (!state) {
         // 右喷
@@ -110,8 +110,8 @@ export default {
         bottle_ctx.fillText(tip, 190, 60);
       } else {
         // 左喷
-        drawImage(bottle_ctx, spray_bottle, 0, 70, true);
-        bottle_ctx.fillText(tip, 20, 60);
+        drawImage(bottle_ctx, spray_bottle, 30, 60, true);
+        bottle_ctx.fillText(tip, 10, 60);
       }
 
       // 创建喷水数量
@@ -139,9 +139,9 @@ export default {
         // bottle_ctx.clearRect(0, 0, 240, 250);
         animation_ctx.clearRect(0, 0, 240, 250);
       }, 2000);
-      setTimeout(() => {
-        bottle_ctx.clearRect(0, 0, 240, 250);
-      }, 1500);
+      // setTimeout(() => {
+      //   bottle_ctx.clearRect(0, 0, 240, 250);
+      // }, 1500);
       // draw();
     },
     flower(state) {
