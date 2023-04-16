@@ -186,18 +186,20 @@ export default {
               class="NPKB"
             ></el-slider>
           </div>
-          <div style="margin-top: 15px">
+
+          <div
+            @click.prevent="
+              answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1'
+            "
+            style="margin-top: 15px"
+          >
             <el-radio
               v-model="answer[0].noNPK"
               label="1"
               style="margin-right: 5px"
               >{{ "" }}</el-radio
             >
-            <span
-              @click="answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1'"
-              style="cursor: pointer; user-select: none"
-              >不施化肥</span
-            >
+            <span style="cursor: pointer; user-select: none">不施化肥</span>
           </div>
           <p v-for="item in getDropdownLabel(0)">{{ item }}</p>
         </div>
@@ -247,16 +249,19 @@ export default {
               class="NPKB"
             ></el-slider>
           </div>
-          <div style="margin-top: 15px; position: relative; z-index: 10">
+          <div
+            style="margin-top: 15px; position: relative; z-index: 10"
+            @click.prevent="
+              answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1'
+            "
+          >
             <el-radio
               v-model="answer[1].noNPK"
               label="1"
               style="margin-right: 5px"
               >{{ "" }}</el-radio
             >
-            <span
-              @click="answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1'"
-              style="cursor: pointer; user-select: none; z-index: 5"
+            <span style="cursor: pointer; user-select: none; z-index: 5"
               >不施化肥</span
             >
           </div>
@@ -317,18 +322,19 @@ export default {
               class="NPKB"
             ></el-slider>
           </div>
-          <div style="margin-top: 15px">
+          <div
+            @click.prevent="
+              answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1'
+            "
+            style="margin-top: 15px"
+          >
             <el-radio
               v-model="answer[2].noNPK"
               label="1"
               style="margin-right: 5px"
               >{{ "" }}</el-radio
             >
-            <span
-              @click="answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1'"
-              style="cursor: pointer; user-select: none"
-              >不施化肥</span
-            >
+            <span style="cursor: pointer; user-select: none">不施化肥</span>
           </div>
           <p v-for="item in getDropdownLabel(2)">{{ item }}</p>
         </div>
