@@ -1,11 +1,17 @@
-const canvasHeight = 220;
+export const canvasHeight = 220;
 export const canvasWidth = 240;
 
-export function drawImage(ctx, imgData, x, y) {
+export function drawImage(ctx, imgData, x, y, overturn = false) {
   const img = new Image();
   img.src = imgData;
   img.onload = function () {
+    if (overturn) {
+      ctx.save();
+      ctx.scale(-1, 1);
+      ctx.translate(-img.width, 0);
+    }
     ctx.drawImage(img, x, y);
+    overturn ? ctx.restore() : null;
   };
 }
 export function coordYTransform(y, objHeight) {
@@ -19,9 +25,9 @@ export class WaterDrop {
     this.vx = -Math.random() * 3.3 - 2;
     this.vy = (Math.random() * 0.3 + 0.35) * 10 - 2;
   }
-  draw(ctx) {
+  draw(ctx, color) {
     if (this.y < canvasHeight - 57) {
-      ctx.fillStyle = "rgba(114, 167, 226)";
+      ctx.fillStyle = color;
     } else {
       ctx.fillStyle = "rgba(255, 255, 255,0)";
     }
@@ -29,9 +35,9 @@ export class WaterDrop {
     ctx.arc(this.x, this.y, 3, 0, 2 * Math.PI, true);
     ctx.fill();
   }
-  update(ctx) {
+  update(ctx, color) {
     this.x += this.vx;
     this.y += this.vy;
-    this.draw(ctx);
+    this.draw(ctx, color);
   }
 }

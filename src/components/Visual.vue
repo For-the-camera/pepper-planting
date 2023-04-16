@@ -4,6 +4,7 @@ import {
   coordYTransform,
   WaterDrop,
   canvasWidth,
+  canvasHeight,
 } from "../tools/canvas";
 import soil_img from "../assets/image/soil.png";
 import seedling from "../assets/image/seedling.png";
@@ -34,6 +35,8 @@ export default {
       flower1,
       flower2,
       flower3,
+      canvasHeight,
+      canvasWidth,
       botany_ctx: null,
       animation_ctx: null,
     };
@@ -97,10 +100,19 @@ export default {
       const animation_ctx = animationEl.getContext("2d");
       const bottleEl = this.$refs.bottleRef;
       const bottle_ctx = bottleEl.getContext("2d");
-      drawImage(bottle_ctx, spray_bottle, 180, 60);
+
       bottle_ctx.fillStyle = "red";
       bottle_ctx.font = "15px serif";
-      bottle_ctx.fillText(tip, 190, 60);
+      if (tip !== "化肥A") {
+        // 右喷
+        drawImage(bottle_ctx, spray_bottle, 180, 60);
+        bottle_ctx.fillText(tip, 190, 60);
+      } else {
+        // 左喷
+        drawImage(bottle_ctx, spray_bottle, 10, 60, true);
+        bottle_ctx.fillText(tip, 20, 60);
+      }
+
       // 创建喷水数量
       let drops = [];
       // 创建drops实例
@@ -111,7 +123,10 @@ export default {
       function draw() {
         animation_ctx.clearRect(0, 0, 240, 250);
         for (let i = 0; i < num; i++) {
-          drops[i].update(animation_ctx);
+          drops[i].update(
+            animation_ctx,
+            tip === "化肥A" ? "rgba(114, 167, 226)" : "rgba(255, 143, 107)"
+          );
         }
       }
       const id = setInterval(() => {
@@ -157,27 +172,27 @@ export default {
   <div style="position: relative; height: 220px">
     <canvas
       ref="canvasRef"
-      width="240"
-      height="220"
+      :width="canvasWidth"
+      :height="canvasHeight"
       style="position: absolute; left: 10%"
     ></canvas>
 
     <canvas
       ref="soilRef"
-      width="240"
-      height="220"
+      :width="canvasWidth"
+      :height="canvasHeight"
       style="position: absolute; left: 10%"
     ></canvas>
     <canvas
       ref="animationRef"
-      width="240"
-      height="220"
+      :width="canvasWidth"
+      :height="canvasHeight"
       style="position: absolute; left: 10%"
     ></canvas>
     <canvas
       ref="bottleRef"
-      width="240"
-      height="220"
+      :width="canvasWidth"
+      :height="canvasHeight"
       style="position: absolute; left: 10%"
     ></canvas>
   </div>
