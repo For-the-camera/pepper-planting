@@ -17,6 +17,9 @@ export default {
   methods: {
     go() {
       if (this.store.nowPage.index !== this.renderList.length) {
+        if (!this.store.historyPage.includes(this.store.nowPage.index)) {
+          this.store.historyPage.push(this.store.nowPage.index);
+        }
         const index = this.store.nowPage.index - 1;
         const now = this.renderList[index];
         now.state = "finish";
