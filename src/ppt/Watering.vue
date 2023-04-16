@@ -356,6 +356,7 @@ export default {
             flex-direction: column;
             width: 100%;
           "
+          class="space-y-1"
         >
           <el-button @click="startExperiment" :disabled="buttonLock"
             >开始实验</el-button
