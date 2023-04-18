@@ -1,17 +1,40 @@
 <script>
+import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 import { useUserStore } from "../stores/user";
 import { isHistoryPage } from "../tools/isHistoryPage";
 export default {
   name: "SeedlingNumText",
   props: {},
   data() {
-    return { store: useUserStore() };
+    return {
+      store: useUserStore(),
+      processStore: useProcessStore(),
+      pptStore: usePPTStore(),
+    };
   },
   methods: {},
   computed: {
     lock: function () {
       return isHistoryPage();
     },
+  },
+  mounted() {
+    this.$watch(
+      () => this.store.issue2,
+      function (val) {
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+        const answer = Object.assign({}, val);
+        this.processStore.page3.answer = {
+          firstResult: answer,
+          lastResult: answer,
+          processResult: [],
+        };
+      },
+      { deep: true }
+    );
   },
 };
 </script>

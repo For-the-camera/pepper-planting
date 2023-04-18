@@ -4,5 +4,6 @@ export const usePPTStore = defineStore("ppt", {
   state: () => ({
     nowPage: {},
     historyPage: [],
+    checkedAnswer: false,
   }),
 });

@@ -2,6 +2,8 @@
 import { useUserStore } from "../stores/user";
 // import Calculator from "../components/Calculator.vue";
 import SelectiveHeight from "../components/SelectiveHeight.vue";
+import { useProcessStore } from "../stores/process";
+import { usePPTStore } from "../stores/ppt";
 export default {
   name: "IssueSixRight",
   components: {
@@ -9,17 +11,59 @@ export default {
   },
   props: {},
   data() {
-    return { store: useUserStore(), mark: false, nowIssue: 0 };
+    return {
+      store: useUserStore(),
+      processStore: useProcessStore(),
+      pptStore: usePPTStore(),
+      mark: false,
+      nowIssue: 0,
+    };
   },
   methods: {
     onConfirm(val) {
-      this.mark = false;
       this.store.issue6.height[this.nowIssue] = val;
+      this.mark = false;
     },
     openDialog(nowIssue) {
       this.mark = true;
       this.nowIssue = nowIssue;
     },
+    postData() {
+      const answer = JSON.parse(JSON.stringify(this.store.issue6));
+      if (this.pptStore.nowPage.firstEnterInto) {
+        this.processStore.page7.answer.firstResult = answer;
+        this.processStore.page7.answer.lastResult = answer;
+      } else {
+        this.processStore.page7.answer.lastResult = answer;
+      }
+    },
+  },
+  mounted() {
+    this.$watch(
+      () => this.mark,
+      function (val, oldval) {
+        if (!val && oldval) {
+          const answer = JSON.parse(JSON.stringify(this.store.issue6));
+          console.log(answer);
+          if (this.pptStore.nowPage.firstEnterInto) {
+            this.processStore.page7.answer.firstResult = answer;
+            this.processStore.page7.answer.lastResult = answer;
+          } else {
+            this.processStore.page7.answer.lastResult = answer;
+          }
+        }
+      },
+      { deep: true }
+    );
+    this.$watch(
+      () => this.store.issue6,
+      function () {
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+      },
+      {deep: true}
+    );
   },
 };
 </script>
@@ -79,6 +123,7 @@ export default {
         :rows="3"
         placeholder="请输入内容"
         v-model="store.issue6.answers"
+        @blur="postData"
       >
       </el-input>
     </div>

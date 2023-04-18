@@ -1,4 +1,6 @@
 <script>
+import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 import { useUserStore } from "../stores/user";
 
 export default {
@@ -8,6 +10,8 @@ export default {
     const store = useUserStore();
     return {
       store,
+      processStore: useProcessStore(),
+      pptStore: usePPTStore(),
       options: [
         { label: "植株高度", value: "A" },
         { label: "花的数量", value: "B" },
@@ -21,6 +25,33 @@ export default {
         ? (this.store.issue5.choice = "")
         : (this.store.issue5.choice = index);
     },
+    postData() {
+      const reason = this.store.issue5.answers;
+      if (this.pptStore.nowPage.firstEnterInto) {
+        this.processStore.page6.answer.firstResult.reason = reason;
+        this.processStore.page6.answer.lastResult.reason = reason;
+      } else {
+        this.processStore.page6.answer.lastResult.reason = reason;
+      }
+    },
+  },
+  mounted() {
+    this.$watch(
+      () => this.store.issue5.choice,
+      function (val) {
+        console.log(val);
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+        const reason = this.store.issue5.reason;
+        if (this.pptStore.nowPage.firstEnterInto) {
+          this.processStore.page6.answer.firstResult = { choice: val, reason };
+          this.processStore.page6.answer.lastResult = { choice: val, reason };
+        } else {
+          this.processStore.page6.answer.lastResult = { choice: val, reason };
+        }
+      }
+    );
   },
 };
 </script>
@@ -66,6 +97,7 @@ export default {
         :rows="4"
         placeholder="请输入内容"
         v-model="store.issue5.answers"
+        @blur="postData"
       >
       </el-input>
     </div>

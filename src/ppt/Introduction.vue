@@ -1,12 +1,17 @@
 <script>
 import pepper from "../assets/image/pepper.png";
+import { usePPTStore } from "../stores/ppt";
 export default {
   name: "Introduction",
   data() {
     return {
       pepper,
+      store: usePPTStore(),
     };
   },
+  mounted(){
+    this.store.nowPage.enterInto = Date.now();
+  }
 };
 </script>
 <template>

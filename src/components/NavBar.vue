@@ -1,5 +1,6 @@
 <script>
 import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 
 export default {
   props: {
@@ -12,10 +13,30 @@ export default {
     return {
       renderList: this.transformData(this.config),
       store: usePPTStore(),
+      processStore: useProcessStore(),
     };
   },
   methods: {
     go() {
+      if (this.store.nowPage.index === 9) {
+        this.$confirm(
+          "即将提交 ‘全部答案’，提交后将无法更改，请确认无误后点击 ’提交全部答案‘",
+          "提示",
+          {
+            confirmButtonText: "提交全部答案",
+            cancelButtonText: "取消",
+          }
+        ).then(() => {
+          if (this.store.nowPage.firstEnterInto) {
+            this.store.nowPage.firstEnterInto = false;
+          }
+          this.store.nowPage.leave = Date.now();
+          this.recordProcessData(this.store.nowPage);
+          this.store.nowPage.firstEvent = 0;
+          this.store.checkedAnswer = true;
+        });
+        return;
+      }
       if (this.store.nowPage.index !== this.renderList.length) {
         if (!this.store.historyPage.includes(this.store.nowPage.index)) {
           this.store.historyPage.push(this.store.nowPage.index);
@@ -27,7 +48,18 @@ export default {
         const next = this.renderList[index + 1];
         next.state = "process";
         this.$set(this.renderList, index + 1, next);
+        const leaveTime = Date.now();
+        this.store.nowPage.leave = leaveTime;
+        if (this.store.nowPage.firstEnterInto) {
+          this.store.nowPage.firstEnterInto = false;
+        }
+        this.recordProcessData(this.store.nowPage);
+
+        this.store.nowPage.firstEvent = 0;
+
         this.store.nowPage = this.renderList[index + 1];
+        const enterTime = Date.now();
+        this.store.nowPage.enterInto = enterTime;
       }
     },
     back() {
@@ -39,7 +71,15 @@ export default {
         const later = this.renderList[index - 1];
         later.state = "process";
         this.$set(this.renderList, index - 1, later);
+        const leaveTime = Date.now();
+        this.store.nowPage.leave = leaveTime;
+        this.recordProcessData(this.store.nowPage);
+        this.store.nowPage.firstEvent = 0;
+
         this.store.nowPage = this.renderList[index - 1];
+
+        const enterTime = Date.now();
+        this.store.nowPage.enterInto = enterTime;
       }
     },
     transformData: (configList) => {
@@ -51,6 +91,38 @@ export default {
         }
         return config;
       });
+    },
+    recordProcessData(page) {
+      const { enterInto, leave, index, firstEvent } = page;
+      const { totalTime, responseTime } = this.processStore[`page${index}`];
+      const answer = Object.assign(
+        {},
+        this.processStore[`page${index}`].answer
+      );
+      const { firstResult, lastResult, processResult } = answer;
+      if (index !== 1 && index !== 5 && index !== 8) {
+        processResult.push(lastResult);
+      }
+      this.processStore[`page${index}`] = {
+        totalTime:
+          totalTime === 0 ? leave - enterInto : totalTime + leave - enterInto,
+        responseTime:
+          firstEvent === 0
+            ? responseTime === 0
+              ? 0
+              : responseTime
+            : responseTime === 0
+            ? leave - firstEvent
+            : responseTime + leave - firstEvent,
+        answer:
+          index === 1
+            ? {}
+            : {
+                firstResult,
+                lastResult,
+                processResult,
+              },
+      };
     },
   },
   mounted() {

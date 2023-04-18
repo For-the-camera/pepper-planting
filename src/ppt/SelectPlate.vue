@@ -1,5 +1,8 @@
 <script>
+import { log } from "mathjs";
 import Visual from "../components/Visual.vue";
+import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 import { useUserStore } from "../stores/user";
 import { isHistoryPage } from "../tools/isHistoryPage";
 export default {
@@ -20,6 +23,8 @@ export default {
       choiceC: false,
       choiceD: false,
       store: useUserStore(),
+      processStore: useProcessStore(),
+      pptStore: usePPTStore(),
     };
   },
   watch: {
@@ -85,6 +90,23 @@ export default {
       });
       this.store.issue1.answers = answersList;
     },
+  },
+  mounted() {
+    this.$watch(
+      () => this.store.issue1.answers,
+      function (val) {
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+        const answers = JSON.parse(JSON.stringify(val));
+        this.processStore.page2.answer = {
+          firstResult: answers,
+          lastResult: answers,
+          processResult: [],
+        };
+      },
+      { deep: true }
+    );
   },
 };
 </script>

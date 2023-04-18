@@ -3,6 +3,8 @@ import { forEach, log } from "mathjs";
 import { isHistoryPage } from "../tools/isHistoryPage";
 import Visual from "../components/Visual.vue";
 import { useUserStore } from "../stores/user";
+import { useProcessStore } from "../stores/process";
+import { usePPTStore } from "../stores/ppt";
 export default {
   name: "Watering",
   components: {
@@ -12,6 +14,8 @@ export default {
   data() {
     return {
       store: useUserStore(),
+      processStore: useProcessStore(),
+      pptStore: usePPTStore(),
       answer: [
         {
           NPKA: 0,
@@ -38,6 +42,179 @@ export default {
       },
       buttonLock: false,
     };
+  },
+  mounted() {
+    this.$watch(
+      () => this.answer[0].noNPK,
+      function (val) {
+        if (val === "1") {
+          const lastResult = JSON.parse(
+            JSON.stringify(this.processStore.page4.answer.lastResult[0])
+          );
+          const { processA, processB } = lastResult;
+          processA.push(-1);
+          processB.push(-1);
+          const result = {
+            npkA: -1,
+            npkB: -1,
+            noNPK: val,
+            processA: processA,
+            processB: processB,
+          };
+          this.processStore.page4.answer.firstResult[0] = result;
+          this.processStore.page4.answer.lastResult[0] = result;
+        } else {
+          const answer = this.answer[0];
+          const processA = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[0].processA
+            )
+          );
+          const processB = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[0].processB
+            )
+          );
+          processA.push(answer.NPKA);
+          processB.push(answer.NPKB);
+          this.processStore.page4.answer.firstResult[0] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+
+          this.processStore.page4.answer.lastResult[0] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+        }
+      }
+    );
+    this.$watch(
+      () => this.answer[1].noNPK,
+      function (val) {
+        if (val === "1") {
+          const lastResult = JSON.parse(
+            JSON.stringify(this.processStore.page4.answer.lastResult[1])
+          );
+          const { processA, processB } = lastResult;
+          processA.push(-1);
+          processB.push(-1);
+          const result = {
+            npkA: -1,
+            npkB: -1,
+            noNPK: val,
+            processA: processA,
+            processB: processB,
+          };
+          this.processStore.page4.answer.firstResult[1] = result;
+          this.processStore.page4.answer.lastResult[1] = result;
+        } else {
+          const answer = this.answer[0];
+          const processA = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[1].processA
+            )
+          );
+          const processB = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[1].processB
+            )
+          );
+          processA.push(answer.NPKA);
+          processB.push(answer.NPKB);
+          this.processStore.page4.answer.firstResult[1] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+
+          this.processStore.page4.answer.lastResult[1] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+        }
+      }
+    );
+    this.$watch(
+      () => this.answer[2].noNPK,
+      function (val) {
+        if (val === "1") {
+          const lastResult = JSON.parse(
+            JSON.stringify(this.processStore.page4.answer.lastResult[2])
+          );
+          const { processA, processB } = lastResult;
+          processA.push(-1);
+          processB.push(-1);
+          const result = {
+            npkA: -1,
+            npkB: -1,
+            noNPK: val,
+            processA: processA,
+            processB: processB,
+          };
+          this.processStore.page4.answer.firstResult[2] = result;
+          this.processStore.page4.answer.lastResult[2] = result;
+        } else {
+          const answer = this.answer[2];
+          const processA = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[2].processA
+            )
+          );
+          const processB = JSON.parse(
+            JSON.stringify(
+              this.processStore.page4.answer.lastResult[2].processB
+            )
+          );
+          processA.push(answer.NPKA);
+          processB.push(answer.NPKB);
+          this.processStore.page4.answer.firstResult[2] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+
+          this.processStore.page4.answer.lastResult[2] = {
+            npkA: answer.NPKA,
+            npkB: answer.NPKB,
+            processA,
+            processB,
+            noNPK: val,
+          };
+        }
+        parent.postMessage(
+          {
+            data: this.processStore.$state,
+            postTime: Date.now(),
+            cst: new Date(),
+            checkedAnswer: this.pptStore.checkedAnswer,
+          },
+          "*"
+        );
+      }
+    );
+    this.$watch(
+      () => this.answer,
+      function () {
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+      },
+      { deep: true }
+    );
   },
   methods: {
     handleCommand: function (index) {
@@ -137,6 +314,37 @@ export default {
         refItem.clear();
       });
     },
+    onSliderChange(index, npk) {
+      const currentAnswer = JSON.parse(JSON.stringify(this.answer[index]));
+      const { NPKA, NPKB, noNPK } = currentAnswer;
+      const lastResult = JSON.parse(
+        JSON.stringify(this.processStore.page4.answer.lastResult[index])
+      );
+
+      if (noNPK !== "1") {
+        console.log(123);
+        const process = lastResult[`${npk === 0 ? "processA" : "processB"}`];
+        npk === 0 ? process.push(NPKA) : process.push(NPKB);
+        const result = {
+          plate: index,
+          npkA: NPKA,
+          npkB: NPKB,
+          processA: npk === 0 ? process : lastResult.processA,
+          processB: npk === 0 ? lastResult.processB : process,
+        };
+        this.processStore.page4.answer.firstResult[index] = result;
+        this.processStore.page4.answer.lastResult[index] = result;
+        parent.postMessage(
+          {
+            data: this.processStore.$state,
+            postTime: Date.now(),
+            cst: new Date(),
+            checkedAnswer: this.pptStore.checkedAnswer,
+          },
+          "*"
+        );
+      }
+    },
   },
   computed: {
     lock: function () {
@@ -175,6 +383,7 @@ export default {
               :step="5"
               v-model="answer[0].NPKA"
               :marks="marks"
+              @change="onSliderChange(0, 0)"
               style="width: 70%"
             ></el-slider>
           </div>
@@ -192,6 +401,7 @@ export default {
               v-model="answer[0].NPKB"
               style="width: 70%"
               class="NPKB"
+              @change="onSliderChange(0, 1)"
             ></el-slider>
           </div>
 
@@ -246,6 +456,7 @@ export default {
               v-model="answer[1].NPKA"
               :marks="marks"
               style="width: 70%"
+              @change="onSliderChange(1, 0)"
             ></el-slider>
           </div>
           <div
@@ -262,6 +473,7 @@ export default {
               v-model="answer[1].NPKB"
               style="width: 70%"
               class="NPKB"
+              @change="onSliderChange(1, 1)"
             ></el-slider>
           </div>
           <div
@@ -326,6 +538,7 @@ export default {
               v-model="answer[2].NPKA"
               :marks="marks"
               style="width: 70%"
+              @change="onSliderChange(2, 0)"
             ></el-slider>
           </div>
           <div
@@ -342,6 +555,7 @@ export default {
               v-model="answer[2].NPKB"
               style="width: 70%"
               class="NPKB"
+              @change="onSliderChange(2, 1)"
             ></el-slider>
           </div>
           <div

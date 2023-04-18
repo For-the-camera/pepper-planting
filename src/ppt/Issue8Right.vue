@@ -1,6 +1,8 @@
 <script>
 import { useUserStore } from "../stores/user";
 import Calculator from "../components/Calculator.vue";
+import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 
 export default {
   name: "IssueEightRight",
@@ -11,6 +13,8 @@ export default {
   data() {
     return {
       store: useUserStore(),
+      pptStore: usePPTStore(),
+      processStore: useProcessStore(),
       mark: false,
       nowIssue: 0,
       options: [
@@ -34,6 +38,33 @@ export default {
         ? (this.store.issue8.choice = "")
         : (this.store.issue8.choice = index);
     },
+    postData() {
+      const reason = this.store.issue8.answers;
+      if (this.pptStore.nowPage.firstEnterInto) {
+        this.processStore.page9.answer.firstResult.reason = reason;
+        this.processStore.page9.answer.lastResult.reason = reason;
+      } else {
+        this.processStore.page9.answer.lastResult.reason = reason;
+      }
+    },
+  },
+  mounted() {
+    this.$watch(
+      () => this.store.issue8.choice,
+      function (val) {
+        console.log(val);
+        if (this.pptStore.nowPage.firstEvent === 0) {
+          this.pptStore.nowPage.firstEvent = Date.now();
+        }
+        const reason = this.store.issue8.reason;
+        if (this.pptStore.nowPage.firstEnterInto) {
+          this.processStore.page9.answer.firstResult = { choice: val, reason };
+          this.processStore.page9.answer.lastResult = { choice: val, reason };
+        } else {
+          this.processStore.page9.answer.lastResult = { choice: val, reason };
+        }
+      }
+    );
   },
 };
 </script>
@@ -70,6 +101,7 @@ export default {
         :rows="4"
         placeholder="请输入内容"
         v-model="store.issue8.answers"
+        @blur="postData"
       >
       </el-input>
     </div>
