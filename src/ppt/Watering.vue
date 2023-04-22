@@ -376,7 +376,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[0].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -392,7 +392,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[0].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -412,6 +412,8 @@ export default {
                 if (!lock) {
                   answer[0].noNPK = answer[0].noNPK === '1' ? '0' : '1';
                 }
+                answer[0].NPKA = 0;
+                answer[0].NPKB = 0;
               }
             "
           >
@@ -448,7 +450,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[1].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -464,7 +466,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[1].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -482,6 +484,8 @@ export default {
                 if (!lock) {
                   answer[1].noNPK = answer[1].noNPK === '1' ? '0' : '1';
                 }
+                answer[1].NPKA = 0;
+                answer[1].NPKB = 0;
               }
             "
             style="margin-top: 15px; position: relative; z-index: 10"
@@ -530,7 +534,7 @@ export default {
           >
             <span>化肥A</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[2].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -546,7 +550,7 @@ export default {
           >
             <span>化肥B</span>
             <el-slider
-              :disabled="lock"
+              :disabled="lock || answer[2].noNPK === '1'"
               :show-tooltip="false"
               :min="0"
               :max="20"
@@ -565,6 +569,8 @@ export default {
                 if (!lock) {
                   answer[2].noNPK = answer[2].noNPK === '1' ? '0' : '1';
                 }
+                answer[2].NPKA = 0;
+                answer[2].NPKB = 0;
               }
             "
           >
@@ -593,17 +599,18 @@ export default {
           style="
             margin-right: 30px;
             display: flex;
-            align-items: end;
-            flex-direction: column;
+            justify-content: end;
             width: 100%;
           "
-          class="space-y-1"
         >
-          <el-button @click="startExperiment" :disabled="buttonLock || lock"
-            >开始实验</el-button
+          <el-button
+            type="primary"
+            @click="startExperiment"
+            :disabled="buttonLock || lock"
+            >观察</el-button
           >
 
-          <el-button @click="reset" :disabled="buttonLock || lock"
+          <el-button @click="reset" :disabled="buttonLock || lock" type="danger"
             >重置</el-button
           >
         </div>
