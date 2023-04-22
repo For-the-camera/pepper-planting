@@ -5,10 +5,12 @@ export default {
     no: {
       type: Number,
     },
+    value: {
+      type: Number | String,
+    },
   },
   data() {
     return {
-      value: "0",
       options1: [
         {
           value: "87.4",
@@ -79,10 +81,34 @@ export default {
   },
   methods: {
     onConfirm() {
+      let option = "";
+      if (this.no === 1) {
+        option = this.options1.find((item) => {
+          if (item.value === this.value) {
+            return true;
+          }
+          return false;
+        });
+      } else if (this.no === 2) {
+        option = this.options2.find((item) => {
+          if (item.value === this.value) {
+            return true;
+          }
+          return false;
+        });
+      } else if (this.no === 3) {
+        option = this.options3.find((item) => {
+          if (item.value === this.value) {
+            return true;
+          }
+          return false;
+        });
+      }
       this.$emit("onConfirm", {
         answer: this.value,
+        option,
       });
-      this.value = "0";
+      this.value = "";
       this.options = [];
     },
   },
@@ -115,11 +141,7 @@ export default {
     <!-- {{ props.no }}号盘内植株高度 -->
     <p>
       <span> {{ no }}号盘内植株高度= &nbsp;</span>
-      <el-select
-        v-model="value"
-        placeholder="请选择最恰当的数据分析方法"
-        style="font-size: 14px"
-      >
+      <el-select v-model="value" placeholder="请选择" style="font-size: 14px">
         <el-option
           v-for="item in options"
           :key="item.value"

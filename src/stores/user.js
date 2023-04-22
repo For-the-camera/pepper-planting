@@ -21,9 +21,9 @@ export const useUserStore = defineStore("user", {
     },
     issue6: {
       height: [
-        { answer: "0" },
-        { answer: "0" },
-        { answer: "0" },
+        { answer: "请选择" },
+        { answer: "请选择" },
+        { answer: "请选择" },
       ],
       answers: "",
     },

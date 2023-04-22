@@ -62,17 +62,17 @@ export default {
           this.pptStore.nowPage.firstEvent = Date.now();
         }
       },
-      {deep: true}
+      { deep: true }
     );
   },
 };
 </script>
 <template>
   <div
-    class="issue flex flex-col justify-items-center bg-right border-radius-round h-full"
-    style="position: relative"
+    class="issue flex flex-col bg-right border-radius-round h-full"
+    style="position: relative; padding-top: 20%"
   >
-    <div class="space-y-3" style="padding-top: 20%">
+    <div class="space-y-3">
       <p>
         <strong>问题5</strong>
         小明收集的育苗盘中植株高度数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
@@ -89,7 +89,7 @@ export default {
           "
           >{{ store.issue6.height[0].answer }}</el-button
         >
-        cm（保留1位小数）
+        cm
       </p>
       <p>
         2号育苗盘内植株高度：
@@ -102,7 +102,7 @@ export default {
           "
           >{{ store.issue6.height[1].answer }}</el-button
         >
-        cm（保留1位小数）
+        cm
       </p>
       <p>
         3号育苗盘内植株高度：
@@ -115,9 +115,9 @@ export default {
           "
           >{{ store.issue6.height[2].answer }}</el-button
         >
-        cm（保留1位小数）
+        cm
       </p>
-      <p>请解释你是如何得出上述数据的：</p>
+      <!-- <p>请解释你是如何得出上述数据的：</p>
       <el-input
         type="textarea"
         :rows="3"
@@ -125,7 +125,7 @@ export default {
         v-model="store.issue6.answers"
         @blur="postData"
       >
-      </el-input>
+      </el-input> -->
     </div>
     <div
       v-show="mark"
@@ -134,6 +134,7 @@ export default {
     <SelectiveHeight
       :no="nowIssue + 1"
       class="selectiveHeight"
+      :value="store.issue6.height[nowIssue].answer"
       v-show="mark"
       @onConfirm="onConfirm"
     ></SelectiveHeight>
