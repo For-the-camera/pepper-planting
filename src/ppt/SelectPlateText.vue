@@ -3,7 +3,26 @@ export default {
   name: "SelectPlateText",
   props: {},
   data() {
-    return {};
+    return {
+      options: [
+        {
+          value: "1",
+          label: "1",
+        },
+        {
+          value: "2",
+          label: "2",
+        },
+        {
+          value: "3",
+          label: "3",
+        },
+        {
+          value: "4",
+          label: "4",
+        },
+      ],
+    };
   },
   methods: {},
 };
@@ -23,9 +42,25 @@ export default {
         <strong>问题1</strong>
         在设计实验时，首先请思考需要几个育苗盘、育苗盘中栽几株辣椒苗？
       </p>
+      <div>
+        请选择育苗盘的个数:
+        <el-select v-model="value" placeholder="请选择育苗盘的个数">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+        个
+      </div>
       <p>具体操作如下：</p>
-      <p>（1）勾选育苗盘编号；</p>
-      <p>（2）之后点击下拉菜单选择辣椒苗株数。 操作完毕后，请点击“下一页”。</p>
+      <p>（1）选择需要几个育苗盘；</p>
+      <p>
+        （2）在左侧育苗盘对应的下拉菜单中选择辣椒苗株数。
+        操作完毕后，请点击“下一页”。
+      </p>
       <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
     </div>
   </div>
