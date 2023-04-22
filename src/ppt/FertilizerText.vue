@@ -11,14 +11,15 @@ export default {
 </script>
 <template>
   <div
-    class="bg-right border-radius-round h-full flex items-center justify-items-center"
+    class="bg-right border-radius-round h-full flex justify-items-center"
+    style="padding-top: 80px"
   >
     <div
       style="padding: 20px; font-size: 22px; line-height: 2em"
       class="space-y-3"
     >
+      <p><strong>阅读材料</strong></p>
       <p>
-        阅读材料
         为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，左图为一种合理的实验设置。
       </p>
 
