@@ -14,7 +14,7 @@ export default {
     class="bg-left border-radius-round h-full flex items-center"
     style="justify-content: center"
   >
-    <img :src="table" alt="pepper" />
+    <img :src="table" alt="pepper" style="width: 90%" />
   </div>
 </template>
 <style scoped></style>

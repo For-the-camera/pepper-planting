@@ -1,10 +1,12 @@
 <script>
 import { useUserStore } from "../stores/user";
 import Calculator from "../components/Calculator.vue";
+import SelectiveNum from "../components/SelectiveNum.vue";
 export default {
   name: "IssueSevenRight",
   components: {
     Calculator,
+    SelectiveNum,
   },
   props: {},
   data() {
@@ -13,9 +15,13 @@ export default {
   methods: {
     onConfirm(val) {
       this.mark = false;
-      this.store.issue7.flower[this.nowIssue] = val;
+      this.store.issue7.flower[this.nowIssue].answer = val.answer;
     },
     openCalculator(nowIssue) {
+      this.mark = true;
+      this.nowIssue = nowIssue;
+    },
+    openDialog(nowIssue) {
       this.mark = true;
       this.nowIssue = nowIssue;
     },
@@ -24,23 +30,66 @@ export default {
 </script>
 <template>
   <div
-    class="issue flex flex-col justify-items-center bg-right border-radius-round h-full"
-    style="position: relative"
+    class="issue flex flex-col bg-right border-radius-round h-full"
+    style="position: relative; padding-top: 20%"
   >
-    <div class="space-y-3" style="padding-top: 25%">
+    <div class="space-y-3">
       <p>
-        阅读材料
-        小红收集的育苗盘中花的数量数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
+        <strong> 问题6 </strong
+        >小红收集的育苗盘中花的数量数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
       </p>
-      <p>小红对花的数量数据进行科学分析，得出：</p>
-      <p>1号育苗盘内花的平均数量为14.2朵；</p>
-      <p>2号育苗盘内花的平均数量为21.5朵；</p>
-      <p>3号育苗盘内花的平均数量为9.7朵。</p>
+      <p>请点击下方蓝色方框，分析：</p>
+
+      <p>
+        1号育苗盘内花的平均数量为：<el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(0);
+            }
+          "
+          >{{ store.issue7.flower[0].answer }}</el-button
+        >
+        朵；
+      </p>
+      <p>
+        2号育苗盘内花的平均数量为：
+        <el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(1);
+            }
+          "
+          >{{ store.issue7.flower[1].answer }}</el-button
+        >
+        朵；
+      </p>
+      <p>
+        3号育苗盘内花的平均数量为：
+        <el-button
+          type="primary"
+          @click="
+            () => {
+              openDialog(2);
+            }
+          "
+          >{{ store.issue7.flower[2].answer }}</el-button
+        >
+        朵。
+      </p>
     </div>
     <div
+      v-show="mark"
       :class="{ 'h-full': true, 'border-radius-round': true, mark: mark }"
     ></div>
-    <Calculator v-show="mark" @onConfirm="onConfirm"></Calculator>
+    <SelectiveNum
+      :no="nowIssue + 1"
+      class="selectiveHeight"
+      :value="store.issue7.flower[nowIssue].answer"
+      v-show="mark"
+      @onConfirm="onConfirm"
+    ></SelectiveNum>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -58,5 +107,11 @@ $text-size: 22px;
   left: 0;
   position: absolute;
   opacity: 0.6;
+}
+.selectiveHeight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 </style>

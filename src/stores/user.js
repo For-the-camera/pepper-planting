@@ -29,10 +29,11 @@ export const useUserStore = defineStore("user", {
     },
     issue7: {
       flower: [
-        { expression: "", answer: "0" },
-        { expression: "", answer: "0" },
-        { expression: "", answer: "0" },
+        { answer: "请选择" },
+        { answer: "请选择" },
+        { answer: "请选择" },
       ],
+      answers: "",
     },
     issue8: {
       choice: "",

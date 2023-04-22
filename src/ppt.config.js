@@ -71,7 +71,7 @@ export default [
   },
   {
     index: 8,
-    title: "阅读材料",
+    title: "问题6",
     firstEnterInto: true,
     firstEvent: 0,
     enterInto: 0,
@@ -81,7 +81,7 @@ export default [
   },
   {
     index: 9,
-    title: "问题6",
+    title: "问题7",
     firstEnterInto: true,
     firstEvent: 0,
     enterInto: 0,
