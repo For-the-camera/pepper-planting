@@ -86,7 +86,7 @@ export default [
     firstEvent: 0,
     enterInto: 0,
     leave: 0,
-    left: import("../src/ppt/Issue8Left.vue"),
-    right: import("../src/ppt/Issue8Right.vue"),
+    single: true,
+    page: import("../src/ppt/Issue8.vue"),
   },
 ];
