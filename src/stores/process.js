@@ -117,7 +117,17 @@ export const useProcessStore = defineStore("process", {
     page8: {
       totalTime: 0,
       responseTime: 0,
-      answer: {},
+      answer: {
+        firstResult: {
+          flowers:[],
+          answers:"",
+        },
+        lastResult: {
+          flowers:[],
+          answers:"",
+        },
+        processResult: [],
+      },
     },
     page9: {
       totalTime: 0,

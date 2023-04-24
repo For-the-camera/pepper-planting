@@ -2,6 +2,7 @@
 import { useUserStore } from "../stores/user";
 import Calculator from "../components/Calculator.vue";
 import SelectiveNum from "../components/SelectiveNum.vue";
+import { log } from "mathjs";
 export default {
   name: "IssueSevenRight",
   components: {
@@ -26,6 +27,17 @@ export default {
       this.nowIssue = nowIssue;
     },
   },
+  mounted(){
+    this.$watch(
+      () => this.mark,
+      function(val,oldVal) {
+        if (!val && oldVal) {
+          const answer = JSON.parse(JSON.stringify(this.store.issue7));
+          console.log(answer);
+        }
+      }
+    )
+  }
 };
 </script>
 <template>

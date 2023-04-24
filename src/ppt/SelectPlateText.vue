@@ -71,13 +71,13 @@ export default {
       class="space-y-3"
     >
       <p>
-        请你设计实验来探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒。实验材料包括：四个大型育苗盘、一些辣椒苗、泥土（来自同一片生物角）。
+        请你设计实验来探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒。实验材料包括：一些大型育苗盘、一些辣椒苗、泥土（来自同一片生物角）。
       </p>
       <p>
         <strong>问题1</strong>
         在设计实验时，首先请思考需要
         <el-select
-          style="width: 55px"
+          style="width: 55px; margin: 0 10px"
           v-model="choiceNum"
           placeholder="请选择育苗盘的个数"
         >
@@ -88,15 +88,10 @@ export default {
             :value="item.value"
           >
           </el-option> </el-select
-        >个育苗盘、育苗盘中栽几株辣椒苗？
+        >个育苗盘？
       </p>
 
-      <p>具体操作如下：</p>
-      <p>（1）选择需要几个育苗盘；</p>
-      <p>
-        （2）在左侧育苗盘对应的下拉菜单中选择辣椒苗株数。
-        操作完毕后，请点击“下一页”。
-      </p>
+      <p style="margin-bottom: 20px;">请在左侧你选择的育苗盘中，选择你所需要的辣椒苗株数</p>
       <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
     </div>
   </div>

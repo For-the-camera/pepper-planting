@@ -79,7 +79,7 @@ export default {
         <p class="text-center">图2</p>
       </div>
       <div>
-        <img :src="table3" alt="" />
+        <img :src="table3" style="height: 243px;" alt="" />
         <p class="text-center">图3</p>
       </div>
     </div>
