@@ -79,7 +79,7 @@ export default {
         <p class="text-center">图2</p>
       </div>
       <div>
-        <img :src="table3" style="height: 243px;" alt="" />
+        <img :src="table3" alt="" />
         <p class="text-center">图3</p>
       </div>
     </div>
@@ -87,7 +87,8 @@ export default {
       <p>
         <strong
           >问题7 为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong
-        >上图是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
+        >图1 与 图2
+        是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
       </p>
 
       <div
@@ -151,7 +152,8 @@ $text-size: 22px;
       object-fit: contain;
     }
     p {
-      color: red;
+      color: black;
+      font-size: 20px;
     }
   }
   .issue {

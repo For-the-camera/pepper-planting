@@ -70,10 +70,10 @@ export default {
         <strong> 问题6 </strong
         >小红收集的育苗盘中花的数量数据如左表所示。每一个育苗盘中均有10株苗，苗的编号为1号到10号。
       </p>
-      <p>请点击下方蓝色方框，分析：</p>
+      <p>请点击下方蓝色方框，分析各个育苗盘内花的数量：</p>
 
       <p>
-        1号育苗盘内花的平均数量为：&nbsp;<el-button
+        1号育苗盘内花的数量为：&nbsp;<el-button
           type="primary"
           @click="
             () => {
@@ -85,7 +85,7 @@ export default {
         朵；
       </p>
       <p>
-        2号育苗盘内花的平均数量为：
+        2号育苗盘内花的数量为：
         <el-button
           type="primary"
           @click="
@@ -98,7 +98,7 @@ export default {
         朵；
       </p>
       <p>
-        3号育苗盘内花的平均数量为：
+        3号育苗盘内花的数量为：
         <el-button
           type="primary"
           @click="

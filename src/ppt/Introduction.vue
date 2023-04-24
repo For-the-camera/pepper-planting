@@ -9,9 +9,9 @@ export default {
       store: usePPTStore(),
     };
   },
-  mounted(){
+  mounted() {
     this.store.nowPage.enterInto = Date.now();
-  }
+  },
 };
 </script>
 <template>
@@ -21,9 +21,9 @@ export default {
       <img :src="pepper" alt="pepper" />
     </div>
     <div class="introduction">
+      <p><strong>前言</strong></p>
       <p>
-        <strong>前言</strong>
-        ：四月份春暖花开、气温回升，老师鼓励大家在学校的一处生物角种植辣椒。目前市面上常用的肥料有两种，需要探究<strong>哪种肥料能促进植物产出更多辣椒</strong>。接下来你将通过实验解决这个问题。
+        四月份春暖花开、气温回升，老师鼓励大家在学校的一处生物角种植辣椒。目前市面上常用的肥料有两种，需要探究<strong>哪种肥料能促进植物产出更多辣椒</strong>。接下来你将通过实验解决这个问题。
       </p>
     </div>
   </div>
@@ -47,7 +47,8 @@ $text-size: 24px;
   }
   .introduction {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     font-size: $text-size;
     line-height: 2em;
   }
