@@ -25,7 +25,7 @@ export default {
         <p>
           选择每一个育苗盘中想要添加的化肥种类，并点击鼠标选择想要喷洒的化肥量（单位为ml）。
         </p>
-        <p>
+        <p style="margin-top: 20px">
           当你设置完三个育苗盘中的化肥及化肥量后，点击<span
             style="
               background-color: #559eff;
