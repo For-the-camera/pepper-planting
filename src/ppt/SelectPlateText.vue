@@ -75,21 +75,22 @@ export default {
       </p>
       <p>
         <strong>问题1</strong>
-        在设计实验时，首先请思考需要几个育苗盘、育苗盘中栽几株辣椒苗？
-      </p>
-      <div>
-        请选择育苗盘的个数:
-        <el-select v-model="choiceNum" placeholder="请选择育苗盘的个数">
+        在设计实验时，首先请思考需要
+        <el-select
+          style="width: 55px"
+          v-model="choiceNum"
+          placeholder="请选择育苗盘的个数"
+        >
           <el-option
             v-for="item in options"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
-          </el-option>
-        </el-select>
-        个
-      </div>
+          </el-option> </el-select
+        >个育苗盘、育苗盘中栽几株辣椒苗？
+      </p>
+
       <p>具体操作如下：</p>
       <p>（1）选择需要几个育苗盘；</p>
       <p>
