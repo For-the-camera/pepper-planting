@@ -1,11 +1,11 @@
 <script>
 import { useUserStore } from "../stores/user";
 import table from "../assets/image/seedling_height.png";
-import Calculator from "../components/calculator.vue";
+// import Calculator from "../components/calculator.vue";
 export default {
   name: "IssueSix",
   components: {
-    Calculator,
+    // Calculator,
   },
   data() {
     return {

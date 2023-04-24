@@ -322,7 +322,6 @@ export default {
       );
 
       if (noNPK !== "1") {
-        console.log(123);
         const process = lastResult[`${npk === 0 ? "processA" : "processB"}`];
         npk === 0 ? process.push(NPKA) : process.push(NPKB);
         const result = {

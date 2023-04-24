@@ -28,15 +28,16 @@ export default {
       this.mark = true;
       this.nowIssue = nowIssue;
     },
-    postData() {
-      const answer = JSON.parse(JSON.stringify(this.store.issue6));
-      if (this.pptStore.nowPage.firstEnterInto) {
-        this.processStore.page7.answer.firstResult = answer;
-        this.processStore.page7.answer.lastResult = answer;
-      } else {
-        this.processStore.page7.answer.lastResult = answer;
-      }
-    },
+    // postData() {
+    //   const answer = JSON.parse(JSON.stringify(this.store.issue6));
+
+    //   if (this.pptStore.nowPage.firstEnterInto) {
+    //     this.processStore.page7.answer.firstResult = result;
+    //     this.processStore.page7.answer.lastResult = result;
+    //   } else {
+    //     this.processStore.page7.answer.lastResult = result;
+    //   }
+    // },
   },
   mounted() {
     this.$watch(
@@ -44,12 +45,19 @@ export default {
       function (val, oldval) {
         if (!val && oldval) {
           const answer = JSON.parse(JSON.stringify(this.store.issue6));
-          console.log(answer);
+          const { height } = answer;
+          const result = Array.from(height, (val) => {
+            if (val.option) {
+              return val.option.label[0];
+            } else {
+              return "";
+            }
+          });
           if (this.pptStore.nowPage.firstEnterInto) {
-            this.processStore.page7.answer.firstResult = answer;
-            this.processStore.page7.answer.lastResult = answer;
+            this.processStore.page7.answer.firstResult = result;
+            this.processStore.page7.answer.lastResult = result;
           } else {
-            this.processStore.page7.answer.lastResult = answer;
+            this.processStore.page7.answer.lastResult = result;
           }
         }
       },
