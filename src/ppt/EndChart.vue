@@ -24,7 +24,7 @@ export default {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  background-color: #f6e58d;
+  background-color: #55e6c1;
   border: 0.1rem solid #353b48;
   border-radius: 30px;
   p {

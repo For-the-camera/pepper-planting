@@ -41,7 +41,7 @@ export default {
       <p>请点击下方蓝色方框，分析：</p>
 
       <p>
-        1号育苗盘内花的平均数量为：&nbsp;&nbsp;<el-button
+        1号育苗盘内花的平均数量为：&nbsp;<el-button
           type="primary"
           @click="
             () => {
