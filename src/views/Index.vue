@@ -87,6 +87,7 @@ export default {
             this.$refs.navBarRef.back();
           }
         "
+        v-show="store.nowPage.index !== 10"
         >上一页</el-button
       >
       <el-button
@@ -96,6 +97,7 @@ export default {
             this.$refs.navBarRef.go();
           }
         "
+        v-show="store.nowPage.index !== 10"
         >下一页</el-button
       >
     </div>
@@ -136,7 +138,8 @@ $ppt-padding: 5px;
   .ctrl {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 9px;
+    height: 40px;
   }
 }
 </style>

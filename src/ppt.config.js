@@ -89,4 +89,10 @@ export default [
     single: true,
     page: import("../src/ppt/Issue8.vue"),
   },
+  {
+    index: 10,
+    title: "完成",
+    left: import("../src/ppt/Issue6Left.vue"),
+    right: import("../src/ppt/End.vue")
+  }
 ];

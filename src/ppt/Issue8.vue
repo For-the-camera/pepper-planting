@@ -52,7 +52,6 @@ export default {
     this.$watch(
       () => this.store.issue8.choice,
       function (val) {
-        console.log(val);
         if (this.pptStore.nowPage.firstEvent === 0) {
           this.pptStore.nowPage.firstEvent = Date.now();
         }
@@ -88,7 +87,7 @@ export default {
       <p>
         <strong
           >问题7 为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong
-        >左图是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
+        >上图是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
       </p>
 
       <div

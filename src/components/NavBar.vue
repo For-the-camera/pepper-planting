@@ -34,6 +34,14 @@ export default {
           this.recordProcessData(this.store.nowPage);
           this.store.nowPage.firstEvent = 0;
           this.store.checkedAnswer = true;
+          const index = this.store.nowPage.index - 1;
+          const now = this.renderList[index];
+          now.state = "finish";
+          this.$set(this.renderList, index, now);
+          const next = this.renderList[index + 1];
+          next.state = "process";
+          this.$set(this.renderList, index + 1, next);
+          this.store.nowPage = this.renderList[index + 1];
         });
         return;
       }
@@ -180,7 +188,7 @@ $wait-color: #bbb7ad;
     .step {
       display: flex;
       align-items: center;
-      padding: 20px 20px 13px 20px;
+      padding: 20px 10px 13px 10px;
       .step-index {
         width: 23px;
         height: 23px;

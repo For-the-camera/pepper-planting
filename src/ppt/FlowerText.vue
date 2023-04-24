@@ -39,7 +39,6 @@ export default {
     this.$watch(
       () => this.store.issue5.choice,
       function (val) {
-        console.log(val);
         if (this.pptStore.nowPage.firstEvent === 0) {
           this.pptStore.nowPage.firstEvent = Date.now();
         }
