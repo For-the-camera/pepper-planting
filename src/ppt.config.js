@@ -92,7 +92,7 @@ export default [
   {
     index: 10,
     title: "完成",
-    left: import("../src/ppt/Issue6Left.vue"),
+    left: import("../src/ppt/EndChart.vue"),
     right: import("../src/ppt/End.vue")
   }
 ];
