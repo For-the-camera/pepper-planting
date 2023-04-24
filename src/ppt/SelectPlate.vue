@@ -18,10 +18,6 @@ export default {
       plateC: 0,
       plateD: 0,
 
-      choiceA: false,
-      choiceB: false,
-      choiceC: false,
-      choiceD: false,
       store: useUserStore(),
       processStore: useProcessStore(),
       pptStore: usePPTStore(),
@@ -61,10 +57,30 @@ export default {
       }));
     },
     choice: function () {
-      return [this.choiceA, this.choiceB, this.choiceC, this.choiceD];
+      return [
+        useUserStore().temp1.choiceA,
+        useUserStore().temp1.choiceB,
+        useUserStore().temp1.choiceC,
+        useUserStore().temp1.choiceD,
+      ];
     },
     lock: function () {
       return isHistoryPage();
+    },
+    choiceA: function () {
+      return useUserStore().temp1.choiceA;
+    },
+    choiceB: function () {
+      return useUserStore().temp1.choiceB;
+    },
+    choiceC: function () {
+      return useUserStore().temp1.choiceC;
+    },
+    choiceD: function () {
+      return useUserStore().temp1.choiceD;
+    },
+    choiceNum: function () {
+      return useUserStore().temp1.choiceNum;
     },
   },
   methods: {
@@ -130,6 +146,7 @@ export default {
           }
         }
       "
+      v-if="choiceNum >= 1"
     >
       <Visual :state="0" ref="plateA_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
@@ -165,6 +182,7 @@ export default {
           }
         }
       "
+      v-if="choiceNum >= 2"
     >
       <Visual :state="0" ref="plateB_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
@@ -200,6 +218,7 @@ export default {
           }
         }
       "
+      v-if="choiceNum >= 3"
     >
       <Visual :state="0" ref="plateC_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">
@@ -235,6 +254,7 @@ export default {
           }
         }
       "
+      v-if="choiceNum >= 4"
     >
       <Visual :state="0" ref="plateD_Ref"></Visual>
       <div style="padding-left: 25px; margin-top: 12px" class="space-y-1">

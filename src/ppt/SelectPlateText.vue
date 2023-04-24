@@ -1,4 +1,5 @@
 <script>
+import { useUserStore } from "../stores/user";
 export default {
   name: "SelectPlateText",
   props: {},
@@ -6,25 +7,59 @@ export default {
     return {
       options: [
         {
-          value: "1",
+          value: 1,
           label: "1",
         },
         {
-          value: "2",
+          value: 2,
           label: "2",
         },
         {
-          value: "3",
+          value: 3,
           label: "3",
         },
         {
-          value: "4",
+          value: 4,
           label: "4",
         },
       ],
+      store: useUserStore(),
+      choiceNum: useUserStore().temp1.choiceNum,
     };
   },
   methods: {},
+  watch: {
+    choiceNum: function (newValue, oldValue) {
+      this.store.temp1.choiceNum = newValue;
+      if (newValue == 0) {
+        this.store.temp1.choiceA = false;
+        this.store.temp1.choiceB = false;
+        this.store.temp1.choiceC = false;
+        this.store.temp1.choiceD = false;
+      }
+      if (newValue == 1) {
+        this.store.temp1.choiceA = true;
+        this.store.temp1.choiceB = false;
+        this.store.temp1.choiceC = false;
+        this.store.temp1.choiceD = false;
+      } else if (newValue == 2) {
+        this.store.temp1.choiceA = true;
+        this.store.temp1.choiceB = true;
+        this.store.temp1.choiceC = false;
+        this.store.temp1.choiceD = false;
+      } else if (newValue == 3) {
+        this.store.temp1.choiceA = true;
+        this.store.temp1.choiceB = true;
+        this.store.temp1.choiceC = true;
+        this.store.temp1.choiceD = false;
+      } else if (newValue == 4) {
+        this.store.temp1.choiceA = true;
+        this.store.temp1.choiceB = true;
+        this.store.temp1.choiceC = true;
+        this.store.temp1.choiceD = true;
+      }
+    },
+  },
 };
 </script>
 <template>
@@ -44,7 +79,7 @@ export default {
       </p>
       <div>
         请选择育苗盘的个数:
-        <el-select v-model="value" placeholder="请选择育苗盘的个数">
+        <el-select v-model="choiceNum" placeholder="请选择育苗盘的个数">
           <el-option
             v-for="item in options"
             :key="item.value"

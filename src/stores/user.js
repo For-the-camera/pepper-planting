@@ -39,5 +39,12 @@ export const useUserStore = defineStore("user", {
       choice: "",
       answers: "",
     },
+    temp1: {
+      choiceA: false,
+      choiceB: false,
+      choiceC: false,
+      choiceD: false,
+      choiceNum: 0,
+    },
   }),
 });
