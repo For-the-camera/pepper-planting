@@ -16,7 +16,7 @@ export default {
   methods: {
     onConfirm(val) {
       this.mark = false;
-      this.store.issue7.flower[this.nowIssue].answer = val.answer;
+      this.store.issue7.flower[this.nowIssue] = val;
     },
     openCalculator(nowIssue) {
       this.mark = true;
@@ -27,17 +27,17 @@ export default {
       this.nowIssue = nowIssue;
     },
   },
-  mounted(){
+  mounted() {
     this.$watch(
       () => this.mark,
-      function(val,oldVal) {
+      function (val, oldVal) {
         if (!val && oldVal) {
           const answer = JSON.parse(JSON.stringify(this.store.issue7));
           console.log(answer);
         }
       }
-    )
-  }
+    );
+  },
 };
 </script>
 <template>
