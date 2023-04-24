@@ -2,7 +2,8 @@
 import { useUserStore } from "../stores/user";
 import Calculator from "../components/Calculator.vue";
 import SelectiveNum from "../components/SelectiveNum.vue";
-import { log } from "mathjs";
+import { usePPTStore } from "../stores/ppt";
+import { useProcessStore } from "../stores/process";
 export default {
   name: "IssueSevenRight",
   components: {
@@ -11,7 +12,13 @@ export default {
   },
   props: {},
   data() {
-    return { store: useUserStore(), mark: false, nowIssue: 0 };
+    return {
+      store: useUserStore(),
+      pptStore: usePPTStore(),
+      processStore: useProcessStore(),
+      mark: false,
+      nowIssue: 0,
+    };
   },
   methods: {
     onConfirm(val) {
@@ -33,7 +40,20 @@ export default {
       function (val, oldVal) {
         if (!val && oldVal) {
           const answer = JSON.parse(JSON.stringify(this.store.issue7));
-          console.log(answer);
+          const { flower } = answer;
+          const result = Array.from(flower, (val) => {
+            if (val.option) {
+              return val.option.label[0];
+            } else {
+              return "";
+            }
+          });
+          if (this.pptStore.nowPage.firstEnterInto) {
+            this.processStore.page8.answer.firstResult = result;
+            this.processStore.page8.answer.lastResult = result;
+          } else {
+            this.processStore.page8.answer.lastResult = result;
+          }
         }
       }
     );
