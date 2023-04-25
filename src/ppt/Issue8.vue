@@ -69,6 +69,12 @@ export default {
 </script>
 <template>
   <div class="container bg-single border-radius-round">
+    <p class="issue">
+      <strong
+        >问题7 为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong
+      >图1 与 图2
+      是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
+    </p>
     <div class="picture">
       <div>
         <img :src="table1" alt="" />
@@ -84,13 +90,6 @@ export default {
       </div>
     </div>
     <div class="issue space-y-3">
-      <p>
-        <strong
-          >问题7 为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong
-        >图1 与 图2
-        是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
-      </p>
-
       <div
         style="
           display: grid;
@@ -141,7 +140,7 @@ $text-size: 22px;
   .picture {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+
     strong {
       margin-bottom: 10px;
       margin-left: 10px;
