@@ -13,7 +13,6 @@ export default {
   mounted() {
     window.addEventListener("message", (e) => {
       console.log("post");
-      console.log(e.data);
     });
     this.$watch(
       () => this.processStore,
