@@ -97,9 +97,9 @@ export default {
     },
     watering(num, tip) {
       const animationEl = this.$refs.animationRef;
-      const animation_ctx = animationEl.getContext("2d");
+      const animation_ctx = animationEl?.getContext("2d");
       const bottleEl = this.$refs.bottleRef;
-      const bottle_ctx = bottleEl.getContext("2d");
+      const bottle_ctx = bottleEl?.getContext("2d");
 
       const state = tip === "化肥A" ? true : false;
       bottle_ctx.fillStyle = state ? "rgba(114, 167, 226)" : "red";
@@ -155,15 +155,15 @@ export default {
     },
     clear() {
       const bottleEl = this.$refs.bottleRef;
-      const bottle_ctx = bottleEl.getContext("2d");
+      const bottle_ctx = bottleEl?.getContext("2d");
       bottle_ctx.clearRect(0, 0, 240, 250);
     },
   },
   mounted() {
     const canvasEl = this.$refs.canvasRef;
-    this.botany_ctx = canvasEl.getContext("2d");
+    this.botany_ctx = canvasEl?.getContext("2d");
     const soilEl = this.$refs.soilRef;
-    const soil_ctx = soilEl.getContext("2d");
+    const soil_ctx = soilEl?.getContext("2d");
     drawImage(soil_ctx, this.soil_img, 0, coordYTransform(0, 57));
     if (this.state == 0) {
       this.plant(0);
