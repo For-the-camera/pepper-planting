@@ -22,7 +22,7 @@ export default {
             data: val.$state,
             postTime: Date.now(),
             cst: new Date(),
-            checkedAnswer: this.pptStore.checkedAnswer,
+            isAnswered: this.pptStore.checkedAnswer,
           },
           "*"
         );
