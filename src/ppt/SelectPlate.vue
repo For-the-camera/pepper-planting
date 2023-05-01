@@ -155,7 +155,9 @@ export default {
             >1号育苗盘</el-radio
           >
         </p>
-        <p style="user-select: none">{{ plateA }}株辣椒苗</p>
+        <p style="user-select: none">
+          {{ plateA }}株辣椒苗（点击下来菜单选择）
+        </p>
         <el-select v-model="plateA" placeholder="请选择" :disabled="lock">
           <el-option
             v-for="item in options"
@@ -191,7 +193,9 @@ export default {
             >2号育苗盘</el-radio
           >
         </p>
-        <p style="user-select: none">{{ plateB }}株辣椒苗</p>
+        <p style="user-select: none">
+          {{ plateB }}株辣椒苗（点击下来菜单选择）
+        </p>
         <el-select :disabled="lock" v-model="plateB" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -227,7 +231,9 @@ export default {
             >3号育苗盘</el-radio
           >
         </p>
-        <p style="user-select: none">{{ plateC }}株辣椒苗</p>
+        <p style="user-select: none">
+          {{ plateC }}株辣椒苗（点击下来菜单选择）
+        </p>
         <el-select :disabled="lock" v-model="plateC" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -263,7 +269,9 @@ export default {
             >4号育苗盘</el-radio
           >
         </p>
-        <p style="user-select: none">{{ plateD }}株辣椒苗</p>
+        <p style="user-select: none">
+          {{ plateD }}株辣椒苗（点击下来菜单选择）
+        </p>
         <el-select :disabled="lock" v-model="plateD" placeholder="请选择">
           <el-option
             v-for="item in options"

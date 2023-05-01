@@ -17,6 +17,7 @@ export default {
     this.$watch(
       () => this.processStore,
       (val) => {
+        console.log("post")
         parent.postMessage(
           {
             data: val.$state,

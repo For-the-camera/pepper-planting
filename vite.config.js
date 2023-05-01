@@ -20,5 +20,8 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  build:{
+    outDir:"PS-012"
+  },
   base: "./",
 });

@@ -47,7 +47,9 @@ export default {
       class="space-y-3"
     >
       <p>
-        为探究哪种肥料（肥料<strong>A</strong>、肥料<strong>B</strong>）能促进植物产出更多辣椒，左图为一种合理的实验设置：3个育苗盘、每个育苗盘中辣椒苗均为10株。
+        为
+        <strong>探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒</strong>，
+        左图提供一种合理的实验设置：3个育苗盘、每个育苗盘中辣椒苗均为10株。
       </p>
 
       <p><strong>问题2.1</strong> 请问为什么设置3个育苗盘？</p>
@@ -68,7 +70,7 @@ export default {
         v-model="store.issue2.answers2"
       >
       </el-input>
-      <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
+      <p>注:作答完毕点击“下一页”后，答案不可更改。</p>
     </div>
   </div>
 </template>

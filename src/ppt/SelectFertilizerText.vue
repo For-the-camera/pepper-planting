@@ -17,8 +17,10 @@ export default {
       class="space-y-3"
     >
       <p>
-        <strong>问题3 </strong
-        >为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，请设计实验。
+        <strong>问题3 </strong>
+        为
+        <strong>探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒</strong>
+        ，请继续设计实验。
       </p>
       <div style="border: 1px solid black; padding: 5px">
         <p>请在左侧界面进行如下操作：</p>
@@ -47,7 +49,7 @@ export default {
         </p>
       </div>
 
-      <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
+      <p>注:作答完毕点击“下一页”后，答案不可更改。</p>
     </div>
   </div>
 </template>

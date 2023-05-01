@@ -69,9 +69,7 @@ export default {
       </p>
       <p>
         <strong> 问题4.1</strong>
-        请问为了回答哪种肥料能促进植物产出更多辣椒这个问题，你认为需要收集的数据是（{{
-          store.issue5.choice
-        }}）
+        请问为了研究哪种肥料能促进植物产出更多辣椒这个问题，你认为需要收集的数据是
       </p>
       <ul>
         <el-radio-group v-model="store.issue5.choice">

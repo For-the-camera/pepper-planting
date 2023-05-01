@@ -70,10 +70,9 @@ export default {
 <template>
   <div class="container bg-single border-radius-round">
     <p class="issue">
-      <strong
-        >问题7 为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong
-      >图1 与 图2
-      是对育苗盘中植株高度(单位cm)、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
+      <strong>为探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒，</strong>图1
+      与 图2
+      是对育苗盘中植株高度、花的数量数据的科学分析。另外，图3是实验结束后的辣椒平均数量。
     </p>
     <div class="picture">
       <div>
@@ -99,9 +98,8 @@ export default {
       >
         <div>
           <p>
-            基于数据，请回答实验结果显示哪种化肥效果更好？{{
-              store.issue8.choice
-            }}
+            <strong>问题7.1 </strong>
+            基于数据，请回答实验结果显示哪种化肥效果更好？
           </p>
           <ul>
             <el-radio-group v-model="store.issue8.choice">
@@ -116,8 +114,17 @@ export default {
             </el-radio-group>
           </ul>
         </div>
-        <div>
-          <p>请解释你选择上述选项的原因：</p>
+        <div
+          style="
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: solid 2px gray;
+          "
+        >
+          <p>
+            <strong>问题7.2 </strong>
+            请解释你选择上述选项的原因：
+          </p>
           <el-input
             type="textarea"
             :rows="4"
@@ -157,7 +164,7 @@ $text-size: 22px;
   }
   .issue {
     font-size: $text-size;
-    padding: 15px;
+    padding: 10px 15px;
     line-height: 2em;
   }
 }

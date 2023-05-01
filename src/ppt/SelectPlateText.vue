@@ -1,4 +1,5 @@
 <script>
+import { usePPTStore } from "../stores/ppt";
 import { useUserStore } from "../stores/user";
 export default {
   name: "SelectPlateText",
@@ -24,6 +25,7 @@ export default {
         },
       ],
       store: useUserStore(),
+      pptStore: usePPTStore(),
       choiceNum: useUserStore().temp1.choiceNum,
     };
   },
@@ -71,11 +73,14 @@ export default {
       class="space-y-3"
     >
       <p>
-        请你设计实验来探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒。实验材料包括：一些大型育苗盘、一些辣椒苗、泥土（来自同一片生物角）。
+        请你设计实验来
+        <strong>探究哪种肥料（肥料A、肥料B）能促进植物产出更多辣椒</strong>。
+        实验材料包括：一些大型育苗盘、一些辣椒苗、泥土（来自同一片生物角）。
       </p>
       <p>
         <strong>问题1</strong>
-        在设计实验时，首先请思考需要
+        在设计实验时，首先需要几个育苗盘？
+        请选择
         <el-select
           style="width: 55px; margin: 0 10px"
           v-model="choiceNum"
@@ -86,13 +91,14 @@ export default {
             :key="item.value"
             :label="item.label"
             :value="item.value"
+            :disabled="!pptStore.nowPage.firstEnterInto"
           >
           </el-option> </el-select
-        >个育苗盘？
+        >
       </p>
 
-      <p style="margin-bottom: 20px;">请在左侧你选择的育苗盘中，选择你所需要的辣椒苗株数</p>
-      <p>注:作答完毕点击”下一页”后，答案不可更改。</p>
+      <p style="margin-bottom: 20px;">请在左侧你选择的育苗盘中，选择你所需要的辣椒苗株数。</p>
+      <p>注:作答完毕点击“下一页”后，答案不可更改。</p>
     </div>
   </div>
 </template>
