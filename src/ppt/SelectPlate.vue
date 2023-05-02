@@ -156,7 +156,7 @@ export default {
           >
         </p>
         <p style="user-select: none">
-          {{ plateA }}株辣椒苗（点击下来菜单选择）
+          {{ plateA }}株辣椒苗（点击下拉框选择）
         </p>
         <el-select v-model="plateA" placeholder="请选择" :disabled="lock">
           <el-option
@@ -194,7 +194,7 @@ export default {
           >
         </p>
         <p style="user-select: none">
-          {{ plateB }}株辣椒苗（点击下来菜单选择）
+          {{ plateB }}株辣椒苗（点击下拉框选择）
         </p>
         <el-select :disabled="lock" v-model="plateB" placeholder="请选择">
           <el-option
@@ -232,7 +232,7 @@ export default {
           >
         </p>
         <p style="user-select: none">
-          {{ plateC }}株辣椒苗（点击下来菜单选择）
+          {{ plateC }}株辣椒苗（点击下拉框选择）
         </p>
         <el-select :disabled="lock" v-model="plateC" placeholder="请选择">
           <el-option
@@ -270,7 +270,7 @@ export default {
           >
         </p>
         <p style="user-select: none">
-          {{ plateD }}株辣椒苗（点击下来菜单选择）
+          {{ plateD }}株辣椒苗（点击下拉框选择）
         </p>
         <el-select :disabled="lock" v-model="plateD" placeholder="请选择">
           <el-option
